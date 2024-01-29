@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-const environment: string = 'dev';
+const environment: string = 'prod';
 let api: AxiosInstance;
 
 if (environment === 'dev') {
@@ -11,7 +11,7 @@ if (environment === 'dev') {
 } else if (environment === 'prod') {
   /* Prod */
   api = axios.create({
-    baseURL: 'https://foodexplorer-api.onrender.com',
+    baseURL: 'https://foodexplorer-backend-sobg.onrender.com',
   });
 }
 
