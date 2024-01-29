@@ -134,13 +134,20 @@ console.log(selectedCategory, selectedStatus)
           console.log(error);
           if (error.response.data.message){
             alert(error.response.data.message);
+
+            navigate('/');
           } else {
             alert("Não foi possível criar o prato.");
+
+            navigate('/');
           }
         });
 
       } catch (error) {
+        alert("Não foi possível criar o prato.");
         console.log(error);
+
+        navigate('/');
       }
     },
   });
