@@ -120,7 +120,6 @@ function AuthProvider({ children }: AuthProviderProps) {
         orders,
         tokenData,
       } = response.data;
-console.log(dishes)
       const user = { ...currentUser, ...permissions[0] };
       const dishesList = dishes ?? [];
 

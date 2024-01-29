@@ -114,7 +114,7 @@ export function Home() {
   }
 
   function handleClickFavorite(dishId: string | undefined) {
-    const isFavorite = favorites && favorites.find((dish) => dish.id === dishId); console.log(isFavorite)
+    const isFavorite = favorites && favorites.find((dish) => dish.id === dishId);
     if (isFavorite) {
       const removeFavorite = isFavorite
       const remainingFavorites = favorites.filter((dish) => dish.id !== dishId)

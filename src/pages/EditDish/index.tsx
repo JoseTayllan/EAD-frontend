@@ -102,18 +102,16 @@ export function EditDish() {
     },
     validationSchema: validationSchema,
     onSubmit: async (values: Utils.editDishProps & {ingredient: string}) => {
+      console.log(values)
       try {
-        console.log(values, ingredients.join(';'));
-
         if (dishImageFile) {
           const fileUploadForm = new FormData();
           fileUploadForm.append('image', dishImageFile);
 
-          const response = await api.patch(
+          await api.patch(
             `/dish/dish_image/${id}`,
             fileUploadForm
           );
-          console.log(response.data)
         }
 
         await api.put(`/dish/${id}`, {
@@ -121,22 +119,23 @@ export function EditDish() {
           status: values.status,
           category: values.category,
           ingredients: ingredients.join(';'),
-          price: values.price && values.price.replace(/\D/g, '.'),
+          price: values.price && values.price.toString().replace(/\D/g, '.'),
           summary_description: values.summary_description,
           full_description: values.full_description,
         }).then((response) => {
-          console.log(response.data);
-
+          console.log(response.data)
           const remainingDishes = dishes.filter((d: Utils.dishProps) => d.id !== id);
-          console.log(remainingDishes);
           localStorage.setItem(
             '@food-explorer-backend:dishes',
             JSON.stringify([...remainingDishes, response.data])
           );
-
+        }).catch((error) => {
+          alert(error.message);
+          console.log(error)
         });
 
       } catch (error) {
+        alert("Não foi possível atualizar.");
         console.log(error);
       }
       navigate('/');
@@ -233,7 +232,6 @@ export function EditDish() {
     $opened={isSideBarOpened}
   >
     <Header
-      // onInputChange
       hasPermission={hasPermission}
       isMenuOpened={isMenuOpened}
       onClickMenu={handleClickMenu}

@@ -88,27 +88,25 @@ console.log(selectedCategory, selectedStatus)
 
   const formik = useFormik({
     initialValues: {
-      name: dishes.find((d: Utils.dishProps) => d.id === id)?.name || (''),
+      name: (''),
       status: 'Selecione um status',
       category: 'Selecione uma categoria',
       ingredient: (''),
       ingredients: [],
-      price: dishes.find((d: Utils.dishProps) => d.id === id)?.price || (''),
-      summary_description: dishes.find((d: Utils.dishProps) => d.id === id)?.summary_description || (''),
-      full_description: dishes.find((d: Utils.dishProps) => d.id === id)?.full_description || (''),
+      price: (''),
+      summary_description: (''),
+      full_description: (''),
       restaurantId: (''),
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        console.log(values, ingredients.join(';'));
-
         await api.post(`/dish`, {
           name: values.name,
           status: values.status,
           category: values.category,
           ingredients: ingredients.join(';'),
-          price: values.price,
+          price: values.price.replace(/\D/g, '.'),
           summary_description: values.summary_description,
           full_description: values.full_description,
           restaurantId: restaurants,
@@ -538,7 +536,7 @@ console.log(selectedCategory, selectedStatus)
                     fullWidth
                     size="large"
                     variant="contained"
-                    type="submit"
+                    type="button"
                     style={
                       { 
                         backgroundColor: theme.foodExplorer.tints.tomato[400], 
