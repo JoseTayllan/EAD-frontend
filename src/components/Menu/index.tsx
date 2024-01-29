@@ -1,4 +1,8 @@
-
+import {
+  ClickAwayListener,
+  IconButton,
+  Popper
+ } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BookIcon from '@mui/icons-material/Book';
@@ -13,8 +17,11 @@ import * as S from './styles';
 import { Search } from '../Search';
 import { Section } from '../Sidebar/Section';
 import { Item } from '../Sidebar/Item';
+import MenuPopperItem from '../Header/MenuPopperItem';
 
 import { useAuth } from '../../hooks/AuthProvider';
+
+import * as Utils from '@/utils/interfaces';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -30,6 +37,14 @@ export function Menu(props: MenuProps) {
     const hasPermission = user.permissionGroup?.role === 'IS_ADMIN';
     const [activeItem, setActiveItem] = useState<string>('');
 
+    const [search, setSearch] = 
+    useState<React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>
+    (null as unknown as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
+    const [filteredDishes, setFilteredDishes] = useState([]);
+    const [anchorSearchEl, setAnchorSearchEl] = useState<null | HTMLElement>(
+      null
+    );
+  
     const navigate = useNavigate();
 
     const searchProps = {
@@ -38,9 +53,19 @@ export function Menu(props: MenuProps) {
         height: '48px',
         padding: '36px 28px',
         marginBottom: '2rem',
-      }
+      },
+      handleKeyDown: handleKeyDown,
+      setSearch: setSearch,
     };
   
+    const dishes = (
+      JSON.parse(
+        localStorage.getItem('@food-explorer-backend:dishes')
+        ? (localStorage.getItem('@food-explorer-backend:dishes') as string)
+          : '[]'
+      )
+    );
+    
     const items = hasPermission
       ? [
           {
@@ -116,32 +141,88 @@ export function Menu(props: MenuProps) {
         navigateTo: string;
     }
   
-      const handleClick = ({ navigateTo }: HandleProps) => {
-        setActiveItem(navigateTo);
+    const handleClick = ({ navigateTo }: HandleProps) => {
+      setActiveItem(navigateTo);
+  
+      if (navigateTo.startsWith('http')) {
+        window.open(navigateTo, '_blank');
+      } else if (navigateTo === '/signout') {
+        signOut();
+      } else if (navigateTo === '/orders'){
+        alert('Funcionalidade em desenvolvimento!');
+      } else {
+        navigate(navigateTo);
+      }
+    };
     
-        if (navigateTo.startsWith('http')) {
-          window.open(navigateTo, '_blank');
-        } else if (navigateTo === '/signout') {
-          signOut();
-        } else if (navigateTo === '/orders'){
-          alert('Funcionalidade em desenvolvimento!');
-        } else {
-          navigate(navigateTo);
-        }
-      };
-      
-      const handleChangeSettings = () => {
-        navigate('/settings');
-      };
-    
-      useEffect(() => {
-        setActiveItem(location.pathname);
-      }, []);
-    
+    const handleChangeSettings = () => {
+      navigate('/settings');
+    };
+  
+    const handleSearchClick = (event: React.MouseEvent<HTMLElement>) => {
+      setAnchorSearchEl(anchorSearchEl ? null : event.currentTarget);
+    };
+  
+    const handleSearchClickAway = () => {
+      setAnchorSearchEl(null);
+    };
+  
+    const openSearch = Boolean(anchorSearchEl);
+    const idSearch = openSearch ? 'simple-popper-menu' : undefined;
+  
+    function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+      if (event.key === 'Enter') {
+        setFilteredDishes(
+          dishes.filter((dish: Utils.dishProps) =>
+            dish.name?.toLowerCase().includes(search.target.value.toLowerCase())
+          )
+        )
+      }
+    }
+
+    useEffect(() => {
+      setActiveItem(location.pathname);
+    }, [location.pathname]);
+  
     return (
         <S.Container>
             <S.Content>
-                <Search searchProps={searchProps} />
+                <ClickAwayListener onClickAway={handleSearchClickAway}>
+                  <IconButton
+                    aria-label="search"
+                    aria-describedby={idSearch}
+                    onClick={handleSearchClick}
+                    title="Filtragem"
+                  >
+                    <Search
+                      searchProps={searchProps}
+                    />
+
+                    <Popper
+                      id={idSearch}
+                      open={openSearch}
+                      anchorEl={anchorSearchEl}
+                    >
+                      <S.PopperContent>
+                        <S.HeaderPopperContent>Resultados da busca</S.HeaderPopperContent>
+                        <S.BodyPopperContent>
+                          {
+                            filteredDishes && filteredDishes.map((dish: Utils.dishProps) => (
+                              <MenuPopperItem
+                                key={dish.id}
+                                icon={<RestaurantIcon />}
+                                title={dish?.name || 'Sem nome'}
+                                callback={() => {
+                                  navigate(`/dish/${dish.id}`);
+                                }}
+                              />
+                            ))
+                          }
+                        </S.BodyPopperContent>
+                      </S.PopperContent>
+                    </Popper>
+                  </IconButton>
+                </ClickAwayListener>
 
                 <S.ItemsContainer>
                 {items.map((item, index) => {

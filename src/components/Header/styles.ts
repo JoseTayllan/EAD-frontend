@@ -186,6 +186,10 @@ export const BodyPopperContent = styled.div`
   display: flex;
   flex-direction: column;
 
+  max-height: 600px;
   min-height: fit-content;
-  min-width: fit-content;
+  max-width: 500px;
+  min-width: 70vw;
+
+  overflow: scroll;
 `;

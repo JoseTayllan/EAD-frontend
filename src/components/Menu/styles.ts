@@ -34,6 +34,37 @@ export const ItemsContainer = styled.div`
   flex: 1;
 `;
 
+export const PopperContent = styled.div`
+  background-color: ${({ theme }) => theme.foodExplorer.dark[1000]};
+  padding: 1rem;
+  margin: 1rem 2rem 0 0;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+`;
+
+export const HeaderPopperContent = styled.div`
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px ${({ theme }) => theme.foodExplorer.dark[400]} solid;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+`;
+
+export const BodyPopperContent = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  max-height: 600px;
+  min-height: fit-content;
+  max-width: 500px;
+  min-width: 70vw;
+
+  overflow: scroll;
+`;
+
 export const Footer = styled.div`
   padding-top: 20px;
   height: 200px;

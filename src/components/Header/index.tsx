@@ -1,3 +1,11 @@
+
+import {
+  Avatar,
+  Button,
+  ClickAwayListener,
+  IconButton,
+  Popper
+ } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -5,8 +13,6 @@ import HomeRounded from '@mui/icons-material/HomeRounded';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 
 import logo from '@/assets/logos/weapons.png';
-
-import { Avatar, Button, ClickAwayListener, IconButton, Popper } from '@mui/material';
 
 import * as S from './styles';
 import { theme } from '@/styles/theme';
@@ -18,15 +24,15 @@ import emptyImage from '../../assets/images/empty-profile.png';
 import { useAuth } from '../../hooks/AuthProvider';
 import { api } from '../../services/api';
 
+import * as Utils from '@/utils/interfaces';
+
 import { Brand } from '../Brand';
 import { Menu } from './Menu';
 import MenuPopperItem from './MenuPopperItem';
 import { Search } from '@/components/Search';
-import { ReceiptLong } from '@mui/icons-material';
+import { ReceiptLong, Restaurant } from '@mui/icons-material';
 
 interface HeaderProps {
-  // onInputChange: any;
-  // isOpened: boolean;
   hasPermission: boolean;
   isMenuOpened: boolean;
   onClickMenu: () => void;
@@ -38,14 +44,24 @@ interface openOrderProps {
 }
 
 export function Header({
-  // onInputChange,
-  // isOpened,
   hasPermission,
   isMenuOpened,
   onClickMenu,
 }: HeaderProps) {
-  // const [search, setSearch] = useState('');
   const { signOut, user } = useAuth();
+  const [search, setSearch] = 
+  useState<React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>
+  (null as unknown as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
+  const [filteredDishes, setFilteredDishes] = useState([]);
+  const [anchorFunctionalitiesEl, setAnchorFunctionalitiesEl] =
+    useState<null | HTMLElement>(null);
+  const [anchorMessagesEl, setAnchorMessagesEl] = useState<null | HTMLElement>(
+    null
+  );
+  const [anchorSearchEl, setAnchorSearchEl] = useState<null | HTMLElement>(
+    null
+  );
+
   const navigate = useNavigate();
   const openOrder: openOrderProps[] = 
     JSON.parse(
@@ -57,12 +73,6 @@ export function Header({
       ? openOrder.length
         : 1;
 
-  const [anchorFunctionalitiesEl, setAnchorFunctionalitiesEl] =
-    useState<null | HTMLElement>(null);
-  const [anchorMessagesEl, setAnchorMessagesEl] = useState<null | HTMLElement>(
-    null
-  );
-
   const handleFunctionalitiesClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorFunctionalitiesEl(
       anchorFunctionalitiesEl ? null : event.currentTarget
@@ -73,6 +83,10 @@ export function Header({
     setAnchorMessagesEl(anchorMessagesEl ? null : event.currentTarget);
   };
 
+  const handleSearchClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorSearchEl(anchorSearchEl ? null : event.currentTarget);
+  };
+
   const handleFunctionalitiesClickAway = () => {
     setAnchorFunctionalitiesEl(null);
   };
@@ -81,18 +95,18 @@ export function Header({
     setAnchorMessagesEl(null);
   };
 
+  const handleSearchClickAway = () => {
+    setAnchorSearchEl(null);
+  };
+
   const openFunctionalities = Boolean(anchorFunctionalitiesEl);
   const idFunctionalities = openFunctionalities ? 'simple-popper' : undefined;
 
   const openMessages = Boolean(anchorMessagesEl);
   const idMessages = openMessages ? 'simple-popper' : undefined;
 
-  // const handleKey = async (event: any) => {
-  //   if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-  //     const response = await api.get(`/notes?title=${search}`);
-  //     // onInputChange(response.data);
-  //   }
-  // };
+  const openSearch = Boolean(anchorSearchEl);
+  const idSearch = openSearch ? 'simple-popper' : undefined;
 
   const handleSignOut = () => {
     navigate('/');
@@ -120,12 +134,32 @@ export function Header({
       height: '48px',
       padding: '36px 28px',
       marginBottom: '2rem',
-    }
+    },
+    handleKeyDown: handleKeyDown,
+    setSearch: setSearch,
   };
 
   const menuProps = {
     isMenuOpened: isMenuOpened,
     onClickMenu: onClickMenu,
+  }
+
+  const dishes = (
+    JSON.parse(
+      localStorage.getItem('@food-explorer-backend:dishes')
+      ? (localStorage.getItem('@food-explorer-backend:dishes') as string)
+        : '[]'
+    )
+  );
+  
+  function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === 'Enter') {
+      setFilteredDishes(
+        dishes.filter((dish: Utils.dishProps) =>
+          dish.name?.toLowerCase().includes(search.target.value.toLowerCase())
+        )
+      )
+    }
   }
 
   return (
@@ -241,9 +275,48 @@ export function Header({
                       </div>
 
                       <div className="SearchBar">
-                        <Search
-                          searchProps={searchProps}
-                        />
+                        <ClickAwayListener onClickAway={handleSearchClickAway}>
+                          <IconButton
+                            aria-label="search"
+                            aria-describedby={idSearch}
+                            onClick={handleSearchClick}
+                            title="Filtragem"
+                          >
+                            <Search
+                              searchProps={searchProps}
+                            />
+
+                            <Popper
+                              id={idSearch}
+                              open={openSearch}
+                              anchorEl={anchorSearchEl}
+                              style={
+                                {
+                                  minWidth: '500px',
+                                  zIndex: 999,
+                                }
+                              }
+                            >
+                              <S.PopperContent>
+                                <S.HeaderPopperContent>Resultados da busca</S.HeaderPopperContent>
+                                <S.BodyPopperContent>
+                                  {
+                                    filteredDishes && filteredDishes.map((dish: Utils.dishProps) => (
+                                      <MenuPopperItem
+                                        key={dish.id}
+                                        icon={<Restaurant />}
+                                        title={dish?.name || 'Sem nome'}
+                                        callback={() => {
+                                          navigate(`/dish/${dish.id}`);
+                                        }}
+                                      />
+                                    ))
+                                  }
+                                </S.BodyPopperContent>
+                              </S.PopperContent>
+                            </Popper>
+                          </IconButton>
+                        </ClickAwayListener>
                       </div>
 
                       <Button
@@ -342,9 +415,49 @@ export function Header({
                       </div>
 
                       <div className="SearchBar">
-                        <Search
-                          searchProps={searchProps}
-                        />
+                        <ClickAwayListener onClickAway={handleSearchClickAway}>
+                          <IconButton
+                            aria-label="search"
+                            aria-describedby={idSearch}
+                            onClick={handleSearchClick}
+                            title="Filtragem"
+                          >
+                            <Search
+                              searchProps={searchProps}
+                            />
+
+                            <Popper
+                              id={idSearch}
+                              open={openSearch}
+                              anchorEl={anchorSearchEl}
+                              style={
+                                {
+                                  minWidth: '500px',
+                                  maxHeight: '500px',
+                                  zIndex: 999,
+                                }
+                              }
+                            >
+                              <S.PopperContent>
+                                <S.HeaderPopperContent>Resultados da busca</S.HeaderPopperContent>
+                                <S.BodyPopperContent>
+                                  {
+                                    filteredDishes && filteredDishes.map((dish: Utils.dishProps) => (
+                                      <MenuPopperItem
+                                        key={dish.id}
+                                        icon={<Restaurant />}
+                                        title={dish?.name || 'Sem nome'}
+                                        callback={() => {
+                                          navigate(`/dish/${dish.id}`);
+                                        }}
+                                      />
+                                    ))
+                                  }
+                                </S.BodyPopperContent>
+                              </S.PopperContent>
+                            </Popper>
+                          </IconButton>
+                        </ClickAwayListener>
                       </div>
 
                       <Button

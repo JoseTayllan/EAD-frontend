@@ -1,9 +1,17 @@
+import {
+  Button,
+  IconButton,
+  Tooltip,
+} from '@mui/material';
+import TourIcon from '@mui/icons-material/EmojiObjects';
+
 import * as S from './styles';
 import { useAuth } from '../../../hooks/AuthProvider';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { Button } from '@mui/material';
+import { Steps, Hints } from 'intro.js-react';
+import 'intro.js/introjs.css';
 
 import { Brand } from '../../../components/Brand';
 import { Input } from '../../../components/Input';
@@ -12,12 +20,15 @@ import * as Utils from '../../../utils/interfaces';
 
 import { theme } from '../../../styles/theme';
 
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '@/assets/logos/weapons.png';
 
 export function Login() {
   const { signIn } = useAuth();
+  const [isStartTour, setIsStartTour] = useState<boolean>(false);
+  
   const navigate = useNavigate();
 
   const company = {
@@ -25,6 +36,31 @@ export function Login() {
     logoUrl: logo,
     width: 50,
     height: 50,
+  };
+
+  const state = {
+    stepsEnabled: isStartTour,
+    initialStep: 0,
+    steps: [
+      {
+        title: 'Bem vindo!',
+        intro:
+          'Seja bem vindo ao:<br><br>Sistema Digital de Gerenciamento de Restaurantes desenvolvido por <br><br> Jonas Augusto Kunzler.',
+      },
+      {
+        title: 'Acesso',
+        intro:
+          'Para acessar o sistema, você deve inserir o seu email e senha cadastrados. <br> <br> O padrão para administrador é: <br>Email: admin@email.com;<br>Senha: 123456. <br><br> O padrão para cliente é: <br>Email: user@email.com;<br>Senha: 123456. <br><br> Aproveite!',
+      },
+    ],
+    // hintsEnabled: isShowHints,
+    hintsEnabled: false,
+    hints: [
+      {
+        element: '#help_tour',
+        hint: 'Dica valiosa',
+      },
+    ],
   };
 
   const validationSchema = yup.object({
@@ -53,8 +89,75 @@ export function Login() {
     },
   });
 
+  function onExit() {
+    setIsStartTour(false);
+  }
+
   return (
     <S.Container>
+    <style>{`
+      .customTooltip {
+        color: #4a4a4a;
+        font-size: 18px;
+      }
+
+      .customTooltip .introjs-tooltiptext {
+        max-width: fit-content;
+      }
+
+      .customTooltip .introjs-tooltip-title {
+        color: #0a41c9;
+      }
+    `}</style>
+    <div
+      style={{
+        position: 'fixed',
+        bottom: '40px',
+        left: '20px',
+        zIndex: 1000,
+      }}
+    >
+      <Tooltip title="Antes de começar" placement="top">
+        <IconButton
+          onClick={() => {
+            setIsStartTour(true);
+            // setIsShowHints(true);
+          }}
+          color="primary"
+        >
+          <TourIcon id="help_tour" style={{ fontSize: '64px' }} />
+        </IconButton>
+      </Tooltip>
+    </div>
+
+    <Steps
+      enabled={state.stepsEnabled}
+      steps={state.steps}
+      initialStep={state.initialStep}
+      onExit={() => onExit()}
+      options={{
+        showProgress: false,
+        showBullets: true,
+        exitOnOverlayClick: false,
+        exitOnEsc: true,
+        nextLabel: 'seguir',
+        prevLabel: 'voltar',
+        // skipLabel: 'Skip',
+        hidePrev: true,
+        doneLabel: 'pronto',
+        overlayOpacity: 0.5,
+        overlayColor: '#000',
+        showStepNumbers: true,
+        keyboardNavigation: true,
+        scrollToElement: true,
+        helperElementPadding: 10,
+        showButtons: true,
+        tooltipClass: 'customTooltip',
+      }}
+    />
+
+    <Hints enabled={state.hintsEnabled} hints={state.hints} />
+
       <S.Content>
         <S.BrandCard >
           <Brand

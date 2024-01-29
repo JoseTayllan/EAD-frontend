@@ -1,8 +1,6 @@
 import * as S from './styles'
 import SearchIcon from '@mui/icons-material/Search'
 
-import { useState } from 'react'
-
 import { theme } from '../../styles/theme'
 
 import { Input } from '../Input'
@@ -11,19 +9,16 @@ type SearchProps = {
   searchProps: {
     placeholder: string;
     style?: React.CSSProperties;
+    setSearch: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    handleKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void;
   },
 }
 
-export function Search(props: SearchProps) {
-  const [search, setSearch] = useState('')
+export function Search(
+    props: SearchProps,
+  ) {
 
-  const handleKey = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      console.log('Pesquisar', search)
-    }
-  }
-
-  return (
+    return (
     <S.Container>
       <S.Content
         style={{
@@ -44,8 +39,8 @@ export function Search(props: SearchProps) {
               }
             />
           }
-          onChange={e => setSearch(e.target.value)}
-          onKeyDown={e => handleKey(e)}
+          onChange={event => props.searchProps.setSearch(event)}
+          onKeyDown={(event) => props.searchProps.handleKeyDown(event)}
           style={props.searchProps.style}
         />
       </S.Content>

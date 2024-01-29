@@ -48,9 +48,6 @@ export const StyledTextField = styled(TextField)<InputProps>(({ style, $isInvisi
   'label': {
     display: 'none',
   },
-  '&:hover': {
-    backgroundColor: theme.foodExplorer.dark[100],
-  },
   '& label': {
     color: theme.foodExplorer.light[100],
     fontWeight: 'bold',
