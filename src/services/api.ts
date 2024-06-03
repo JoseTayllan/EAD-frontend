@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-const environment: string = 'prod';
+const environment: string = 'dev';
 let api: AxiosInstance;
 
 if (environment === 'dev') {
