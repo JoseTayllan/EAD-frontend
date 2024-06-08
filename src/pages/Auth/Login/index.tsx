@@ -23,7 +23,7 @@ import { theme } from '../../../styles/theme';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import logo from '@/assets/logos/weapons.png';
+import logo from '@/assets/logos/Logo-academicos-do-tatuape-2018.png';
 
 export function Login() {
   const { signIn } = useAuth();
@@ -32,10 +32,10 @@ export function Login() {
   const navigate = useNavigate();
 
   const company = {
-    name: 'foodExplorer',
+    name: 'EAD System',
     logoUrl: logo,
-    width: 50,
-    height: 50,
+    width: 250,
+    height: 250,
   };
 
   const state = {
@@ -163,6 +163,10 @@ export function Login() {
           <Brand
             style={
               {
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
                 fontSize: 37.243,
               }
             }
@@ -176,7 +180,7 @@ export function Login() {
             <h1
               style={
                 {
-                  color: theme.foodExplorer.light[100],
+                  color: theme.coead.light[100],
                   fontSize: 32,
                   fontWeight: 500,
                   marginBottom: 24,
@@ -217,7 +221,7 @@ export function Login() {
               type="submit"
               style={
                 { 
-                  backgroundColor: theme.foodExplorer.tints.tomato[100], 
+                  backgroundColor: theme.coead.tints.tomato[100], 
                   textTransform: 'none',
                 }
               }
@@ -231,7 +235,7 @@ export function Login() {
               onClick={() => navigate('/signup')}
               style={
                 { 
-                  color: theme.foodExplorer.light[100],
+                  color: theme.coead.light[100],
                   textTransform: 'none',
                 }}
             >

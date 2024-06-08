@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import login from '../../../assets/images/weapons.png';
 
 export const Container = styled.div`
   display: flex;
@@ -29,6 +28,7 @@ export const BrandCard = styled.div`
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
+    background: ${({ theme }) => theme.coead.tints.mint[100]};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +51,7 @@ export const FormCard = styled.div`
   height: auto;
 
   @media screen and (min-width: 768px) {
-    background: url(${login}) no-repeat center;
+    background: ${({ theme }) => theme.coead.light[100]};
     background-size: cover;
 
     display: flex;
@@ -79,7 +79,7 @@ export const Form = styled.form`
   @media screen and (min-width: 768px) {
     margin-top: 0.5rem;
     padding: 2.4rem;
-    background: ${({ theme }) => theme.foodExplorer.dark[700]};
+    background: ${({ theme }) => theme.coead.dark[700]};
     border-radius: 8px;
 
     width: 40vw;

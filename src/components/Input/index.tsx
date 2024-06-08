@@ -29,7 +29,7 @@ export function Input({ icon, ...rest }: CustomInputProps) {
               position="start"
               sx={
                 {
-                  color: `${theme.foodExplorer.light[100]}`,
+                  color: `${theme.coead.light[100]}`,
                   margin: '0 8px',
                 }
               }

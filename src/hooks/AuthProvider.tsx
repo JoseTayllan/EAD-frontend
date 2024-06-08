@@ -124,29 +124,29 @@ function AuthProvider({ children }: AuthProviderProps) {
       const dishesList = dishes ?? [];
 
       localStorage.setItem(
-        '@food-explorer-backend:categories',
+        '@coead-backend:categories',
         JSON.stringify(categories ? categories : [])
       );
       localStorage.setItem(
-        '@food-explorer-backend:restaurants',
+        '@coead-backend:restaurants',
         JSON.stringify(restaurants ? restaurants : [])
       );
       localStorage.setItem(
-        '@food-explorer-backend:dishes',
+        '@coead-backend:dishes',
         JSON.stringify(dishesList ? dishesList : [])
       );
       localStorage.setItem(
-        '@food-explorer-backend:orders',
+        '@coead-backend:orders',
         JSON.stringify(orders ? orders : [])
       );
       if (user.userFavoriteDishes) {
         const favoritesList: Utils.dishProps[] = user.userFavoriteDishes.map((item: Utils.favoriteDishProps) => {
           return dishesList.find((dish: Utils.dishProps) => dish.id === item.dishId);
         })
-        localStorage.setItem('@food-explorer-backend:favorites', JSON.stringify(favoritesList ? favoritesList.filter((favorite) => favorite !== undefined) : []));
+        localStorage.setItem('@coead-backend:favorites', JSON.stringify(favoritesList ? favoritesList.filter((favorite) => favorite !== undefined) : []));
       }
-      localStorage.setItem('@food-explorer-backend:token', tokenData.token);
-      localStorage.setItem('@food-explorer-backend:user', JSON.stringify(user));
+      localStorage.setItem('@coead-backend:token', tokenData.token);
+      localStorage.setItem('@coead-backend:user', JSON.stringify(user));
 
       api.defaults.headers.common['Authorization'] = tokenData.token;
       setData({ ...user, token: tokenData.token });
@@ -160,20 +160,20 @@ function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const signOut = () => {
-    localStorage.removeItem('@food-explorer-backend:categories');
-    localStorage.removeItem('@food-explorer-backend:restaurants');
-    localStorage.removeItem('@food-explorer-backend:dishes');
-    localStorage.removeItem('@food-explorer-backend:orders');
-    localStorage.removeItem('@food-explorer-backend:openOrder');
-    localStorage.removeItem('@food-explorer-backend:editingDish');
-    localStorage.removeItem('@food-explorer-backend:visualizedDish');
-    localStorage.removeItem('@food-explorer-backend:restaurants');
-    localStorage.removeItem('@food-explorer-backend:restaurant');
-    localStorage.removeItem('@food-explorer-backend:permissions');
-    localStorage.removeItem('@food-explorer-backend:token');
-    localStorage.removeItem('@food-explorer-backend:users');
-    localStorage.removeItem('@food-explorer-backend:user');
-    localStorage.removeItem('@food-explorer-backend:favorites');
+    localStorage.removeItem('@coead-backend:categories');
+    localStorage.removeItem('@coead-backend:restaurants');
+    localStorage.removeItem('@coead-backend:dishes');
+    localStorage.removeItem('@coead-backend:orders');
+    localStorage.removeItem('@coead-backend:openOrder');
+    localStorage.removeItem('@coead-backend:editingDish');
+    localStorage.removeItem('@coead-backend:visualizedDish');
+    localStorage.removeItem('@coead-backend:restaurants');
+    localStorage.removeItem('@coead-backend:restaurant');
+    localStorage.removeItem('@coead-backend:permissions');
+    localStorage.removeItem('@coead-backend:token');
+    localStorage.removeItem('@coead-backend:users');
+    localStorage.removeItem('@coead-backend:user');
+    localStorage.removeItem('@coead-backend:favorites');
 
     setData('');
   };
@@ -183,8 +183,8 @@ function AuthProvider({ children }: AuthProviderProps) {
     avatarFile,
   }: Utils.updateUserProps) => {
     try {
-      const token = localStorage.getItem('@food-explorer-backend:token');
-      const user = localStorage.getItem('@food-explorer-backend:user');
+      const token = localStorage.getItem('@coead-backend:token');
+      const user = localStorage.getItem('@coead-backend:user');
       if (user) {
         const userInfo = JSON.parse(user);
 
@@ -205,7 +205,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         userInfo.email = userProfile.email ? userProfile.email : userInfo.email;
 
         localStorage.setItem(
-          '@food-explorer-backend:user',
+          '@coead-backend:user',
           JSON.stringify(userInfo)
         );
         setData({ ...userInfo, token });
@@ -220,8 +220,8 @@ function AuthProvider({ children }: AuthProviderProps) {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('@food-explorer-backend:token');
-    const user = localStorage.getItem('@food-explorer-backend:user');
+    const token = localStorage.getItem('@coead-backend:token');
+    const user = localStorage.getItem('@coead-backend:user');
     if (user) {
       const userInfo = JSON.parse(user);
 

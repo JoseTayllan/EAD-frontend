@@ -60,8 +60,8 @@ export function Menu(props: MenuProps) {
   
     const dishes = (
       JSON.parse(
-        localStorage.getItem('@food-explorer-backend:dishes')
-        ? (localStorage.getItem('@food-explorer-backend:dishes') as string)
+        localStorage.getItem('@coead-backend:dishes')
+        ? (localStorage.getItem('@coead-backend:dishes') as string)
           : '[]'
       )
     );

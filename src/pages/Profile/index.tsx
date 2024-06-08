@@ -128,7 +128,7 @@ export function Profile() {
     validationSchema: validationSchema,
     onSubmit: async (values: Utils.updateUserProps["userProfile"]) => {
       try {
-        const user = localStorage.getItem('@food-explorer-backend:user');
+        const user = localStorage.getItem('@coead-backend:user');
         if (user) {
           const userInfo = JSON.parse(user);
           const newUserInfo: Utils.updateUserProps["userProfile"] = {};
@@ -249,12 +249,12 @@ export function Profile() {
                     sx={
                         {
                             textTransform: "none",
-                            color: theme.foodExplorer.light[100],
+                            color: theme.coead.light[100],
                             width: 'fit-content',
                             margin: '0',
                             padding: '8px 16px 8px 8px',
 
-                            borderColor: theme.foodExplorer.light[100],
+                            borderColor: theme.coead.light[100],
                         }
                     }
                     onClick={handleBack}

@@ -27,7 +27,7 @@ import { useAuth } from '../../hooks/AuthProvider';
 import { Steps, Hints } from 'intro.js-react';
 import 'intro.js/introjs.css';
 
-import logo from '../../assets/logos/weapons.png';
+import logo from '../../assets/images/empty-profile.png';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -43,23 +43,23 @@ export function Home() {
   const [isStartTour, setIsStartTour] = useState<boolean>(false);
   const [categories, setCategories] = useState<Utils.categoryProps[]>(
     JSON.parse(
-      localStorage.getItem('@food-explorer-backend:categories')
-        ? (localStorage.getItem('@food-explorer-backend:categories') as string)
+      localStorage.getItem('@coead-backend:categories')
+        ? (localStorage.getItem('@coead-backend:categories') as string)
         : '[]'
     )
   );
   const dishes = (
     JSON.parse(
-      localStorage.getItem('@food-explorer-backend:dishes')
-      ? (localStorage.getItem('@food-explorer-backend:dishes') as string)
+      localStorage.getItem('@coead-backend:dishes')
+      ? (localStorage.getItem('@coead-backend:dishes') as string)
         : '[]'
     )
   );
   
   const [openOrder, setOpenOrder] = useState<Utils.openOrderProps[]>(
     JSON.parse(
-      localStorage.getItem('@food-explorer-backend:openOrder')
-    ? (localStorage.getItem('@food-explorer-backend:openOrder') as string)
+      localStorage.getItem('@coead-backend:openOrder')
+    ? (localStorage.getItem('@coead-backend:openOrder') as string)
         : '[]'
     )
   );
@@ -126,7 +126,7 @@ export function Home() {
         }
         api.patch(`favorite/`, values).then(() => {
           setFavorites(remainingFavorites)
-          localStorage.setItem('@food-explorer-backend:favorites', JSON.stringify(remainingFavorites))
+          localStorage.setItem('@coead-backend:favorites', JSON.stringify(remainingFavorites))
         }).catch((error) => {
           console.error(error)
           alert("Não foi possível realizar operação")
@@ -141,7 +141,7 @@ export function Home() {
         }
         api.patch(`favorite/`, values).then(() => {
           setFavorites([...favorites, addFavorite])
-          localStorage.setItem('@food-explorer-backend:favorites', JSON.stringify([...favorites, addFavorite]))
+          localStorage.setItem('@coead-backend:favorites', JSON.stringify([...favorites, addFavorite]))
         }).catch((error) => {
           console.error(error)
           alert("Não foi possível realizar operação")
@@ -163,7 +163,7 @@ export function Home() {
       ]);
 
       JSON.stringify(
-        localStorage.setItem('@food-explorer-backend:openOrder',
+        localStorage.setItem('@coead-backend:openOrder',
         JSON.stringify([
           ...openOrder,
           {
@@ -182,7 +182,7 @@ export function Home() {
       ]);
 
       JSON.stringify(
-        localStorage.setItem('@food-explorer-backend:openOrder',
+        localStorage.setItem('@coead-backend:openOrder',
         JSON.stringify([
           openOrder,
           {
@@ -196,8 +196,8 @@ export function Home() {
 
   useEffect(() => {
     const userFavorites = JSON.parse(
-      localStorage.getItem('@food-explorer-backend:favorites')
-        ? (localStorage.getItem('@food-explorer-backend:favorites') as string)
+      localStorage.getItem('@coead-backend:favorites')
+        ? (localStorage.getItem('@coead-backend:favorites') as string)
         : '[]'
     );
     if (userFavorites) {
@@ -213,7 +213,7 @@ export function Home() {
     api.get('category/')
    .then((response) => {
         setCategories(response.data);
-        localStorage.setItem('@food-explorer-backend:categories', JSON.stringify(response.data));
+        localStorage.setItem('@coead-backend:categories', JSON.stringify(response.data));
       })
   }, []);
 

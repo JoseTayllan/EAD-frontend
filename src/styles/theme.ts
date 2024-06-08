@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface Theme {
-    foodExplorer: {
+    coead: {
       light: {
         100: string;
         200: string;
@@ -38,6 +38,7 @@ declare module '@mui/material/styles' {
         },
         mint: {
           100: string;
+          200: string;
         },
         cake: {
           100: string;
@@ -48,7 +49,7 @@ declare module '@mui/material/styles' {
   }
   
   interface ThemeOptions {
-    foodExplorer?: {
+    coead?: {
       light?: {
         100: string;
         200: string;
@@ -82,6 +83,7 @@ declare module '@mui/material/styles' {
         },
         mint: {
           100: string;
+          200: string;
         },
         cake: {
           100: string;
@@ -93,7 +95,7 @@ declare module '@mui/material/styles' {
 }
 
 const theme = createTheme({
-  foodExplorer: {
+  coead: {
     light: {
       100: '#FFFFFF',
       200: '#FFFAF1',
@@ -126,7 +128,8 @@ const theme = createTheme({
         100: '#FBA94C',
       },
       mint: {
-        100: '#04D361',
+        100: '#008000',
+        200: '#04D361',
       },
       cake: {
         100: '#065E7C',

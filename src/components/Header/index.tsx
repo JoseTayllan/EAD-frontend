@@ -12,7 +12,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import HomeRounded from '@mui/icons-material/HomeRounded';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 
-import logo from '@/assets/logos/weapons.png';
+import logo from '@/assets/images/empty-profile.png';
 
 import * as S from './styles';
 import { theme } from '@/styles/theme';
@@ -65,8 +65,8 @@ export function Header({
   const navigate = useNavigate();
   const openOrder: openOrderProps[] = 
     JSON.parse(
-      localStorage.getItem('@food-explorer-backend:openOrder')
-    ? (localStorage.getItem('@food-explorer-backend:openOrder') as string)
+      localStorage.getItem('@coead-backend:openOrder')
+    ? (localStorage.getItem('@coead-backend:openOrder') as string)
         : '[]'
     )
   const orderQuantity = Array.isArray(openOrder)
@@ -120,7 +120,7 @@ export function Header({
   const orderList = orderQuantity;
 
   const company = {
-    name: 'foodExplorer',
+    name: 'coead',
     logoUrl: logo,
     width: 48,
     height: 48,
@@ -146,8 +146,8 @@ export function Header({
 
   const dishes = (
     JSON.parse(
-      localStorage.getItem('@food-explorer-backend:dishes')
-      ? (localStorage.getItem('@food-explorer-backend:dishes') as string)
+      localStorage.getItem('@coead-backend:dishes')
+      ? (localStorage.getItem('@coead-backend:dishes') as string)
         : '[]'
     )
   );
@@ -324,7 +324,7 @@ export function Header({
                         sx={
                             {
                               textTransform: "none",
-                              color: theme.foodExplorer.light[100],
+                              color: theme.coead.light[100],
                               width: 'calc(416px + 0.5vw)',
                               margin: '24px auto',
                               padding: '12px 36px',
@@ -341,7 +341,7 @@ export function Header({
                         sx={
                             {
                               textTransform: "none",
-                              color: theme.foodExplorer.light[100],
+                              color: theme.coead.light[100],
                               width: 'calc(316px + 0.5vw)',
                               margin: '24px auto',
                               padding: '12px 36px',
@@ -358,8 +358,8 @@ export function Header({
                         sx={
                             {
                               textTransform: "none",
-                              backgroundColor: theme.foodExplorer.tints.tomato[100],
-                              color: theme.foodExplorer.light[100],
+                              backgroundColor: theme.coead.tints.tomato[100],
+                              color: theme.coead.light[100],
                               width: 'calc(316px + 0.5vw)',
                               margin: '24px auto',
                               padding: '12px 36px',
@@ -465,7 +465,7 @@ export function Header({
                         sx={
                             {
                               textTransform: "none",
-                              color: theme.foodExplorer.light[100],
+                              color: theme.coead.light[100],
                               width: 'calc(416px + 0.5vw)',
                               margin: '24px auto',
                               padding: '12px 36px',
@@ -482,7 +482,7 @@ export function Header({
                         sx={
                             {
                               textTransform: "none",
-                              color: theme.foodExplorer.light[100],
+                              color: theme.coead.light[100],
                               width: 'calc(416px + 0.5vw)',
                               margin: '24px auto',
                               padding: '12px 36px',
@@ -500,8 +500,8 @@ export function Header({
                             {
                               display: 'flex',
                               textTransform: "none",
-                              backgroundColor: theme.foodExplorer.tints.tomato[100],
-                              color: theme.foodExplorer.light[100],
+                              backgroundColor: theme.coead.tints.tomato[100],
+                              color: theme.coead.light[100],
                               width: 'calc(416px + 0.5vw)',
                               margin: '24px auto',
                               padding: '12px 36px',

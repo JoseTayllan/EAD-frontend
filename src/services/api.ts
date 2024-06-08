@@ -6,12 +6,12 @@ let api: AxiosInstance;
 if (environment === 'dev') {
   /* Dev */
   api = axios.create({
-    baseURL: 'http://localhost:3333',
+    baseURL: 'http://localhost:3001',
   });
 } else if (environment === 'prod') {
   /* Prod */
   api = axios.create({
-    baseURL: 'https://foodexplorer-backend-sobg.onrender.com',
+    baseURL: 'https://coead-backend-sobg.onrender.com',
   });
 }
 

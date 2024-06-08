@@ -50,7 +50,7 @@ export function FavoriteCard({ props }: DishCardProps) {
                 borderRadius: '8px',
                 width: '55vw',
                 maxWidth: '300px',
-                backgroundColor: theme.foodExplorer.dark[200],
+                backgroundColor: theme.coead.dark[200],
 
                 margin: '24px auto 0',
                 padding: '0 12px',
@@ -101,7 +101,7 @@ export function FavoriteCard({ props }: DishCardProps) {
                   display: 'flex',
                   justifyContent: 'flex-start',
                   width: '100%',
-                  color: theme.foodExplorer.light[300],
+                  color: theme.coead.light[300],
 
                   fontSize: '24px',
 
@@ -130,7 +130,7 @@ export function FavoriteCard({ props }: DishCardProps) {
                     display: 'flex',
                     justifyContent: 'flex-start',
                     
-                  color: theme.foodExplorer.tints.tomato[100],
+                  color: theme.coead.tints.tomato[100],
                   width: '100%',
 
                   fontSize: '12px',

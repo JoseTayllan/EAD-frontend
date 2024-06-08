@@ -9,9 +9,6 @@ export const Container = styled(MuiContainer).attrs({
 
   width: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
 
   > span {
@@ -22,6 +19,7 @@ export const Container = styled(MuiContainer).attrs({
   };
 
   @media screen and (min-width: 768px) {
+    display: flex;
     gap: 20px;
   }
 `;

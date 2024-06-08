@@ -57,7 +57,7 @@ export const Title = styled.h1`
     font-size: 3.8vw;
     font-weight: 600;
 
-    color: ${({ theme }) => theme.foodExplorer.light[300]};
+    color: ${({ theme }) => theme.coead.light[300]};
 
     @media screen and (min-width: 768px) {
         font-size: 18px;
@@ -75,7 +75,7 @@ export const Description = styled.p`
     font-weight: 400;
     font-size: 2.4vw;
 
-    color: ${({ theme }) => theme.foodExplorer.light[300]};
+    color: ${({ theme }) => theme.coead.light[300]};
 
     @media screen and (min-width: 768px) {
         font-size: 14px;

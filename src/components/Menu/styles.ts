@@ -35,7 +35,7 @@ export const ItemsContainer = styled.div`
 `;
 
 export const PopperContent = styled.div`
-  background-color: ${({ theme }) => theme.foodExplorer.dark[1000]};
+  background-color: ${({ theme }) => theme.coead.dark[1000]};
   padding: 1rem;
   margin: 1rem 2rem 0 0;
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -47,7 +47,7 @@ export const PopperContent = styled.div`
 export const HeaderPopperContent = styled.div`
   display: flex;
   justify-content: center;
-  border-bottom: 2px ${({ theme }) => theme.foodExplorer.dark[400]} solid;
+  border-bottom: 2px ${({ theme }) => theme.coead.dark[400]} solid;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   font-weight: bold;

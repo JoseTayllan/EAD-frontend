@@ -2,7 +2,7 @@ import * as S from './styles'
 
 import { Brand } from '../Brand'
 
-import logo from '@/assets/logos/weapons.png'
+import logo from '@/assets/images/empty-profile.png'
 
 import { theme } from '../../styles/theme';
 
@@ -10,7 +10,7 @@ import CopyrightIcon from '@mui/icons-material/Copyright';
 
 export function Footer() {
   const company = {
-    name: 'foodExplorer',
+    name: 'coead',
     logoUrl: logo,
     width: 25,
     height: 25,
@@ -18,7 +18,7 @@ export function Footer() {
   return (
     <S.Container>
       <S.Content>
-        <Brand style={{ width: '25vw', color: theme.foodExplorer.light[700], fontSize: 15.262}} company={company}/>
+        <Brand style={{ width: '25vw', color: theme.coead.light[700], fontSize: 15.262}} company={company}/>
         <S.CopyRight>
           <CopyrightIcon style={
             {

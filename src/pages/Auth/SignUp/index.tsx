@@ -18,13 +18,13 @@ import * as Utils from '../../../utils/interfaces';
 
 import { theme } from '../../../styles/theme';
 
-import logo from '@/assets/logos/weapons.png';
+import logo from '@/assets/images/empty-profile.png';
 
 export function SignUp() {
   const navigate = useNavigate();
 
   const company = {
-    name: 'foodExplorer',
+    name: 'coead',
     logoUrl: logo,
     width: 50,
     height: 50,
@@ -94,7 +94,7 @@ export function SignUp() {
           >
             <h1
               style={{
-                color: theme.foodExplorer.light[100],
+                color: theme.coead.light[100],
                 fontSize: 32,
                 fontWeight: 500,
                 marginBottom: 24,
@@ -157,7 +157,7 @@ export function SignUp() {
               type="submit"
               style={
                 { 
-                  backgroundColor: theme.foodExplorer.tints.tomato[100], 
+                  backgroundColor: theme.coead.tints.tomato[100], 
                   textTransform: 'none',
                 }
               }
@@ -171,7 +171,7 @@ export function SignUp() {
               onClick={() => navigate('/')}
               style={
                 { 
-                  color: theme.foodExplorer.light[100],
+                  color: theme.coead.light[100],
                   textTransform: 'none',
                 }}
             >

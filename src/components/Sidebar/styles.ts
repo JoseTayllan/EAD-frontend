@@ -82,7 +82,7 @@ export const Profile = styled.div`
   gap: 8px;
 
   > button {
-    color: ${({ theme }) => theme.foodExplorer.light[300]};
+    color: ${({ theme }) => theme.coead.light[300]};
     font-size: large;
   }
 

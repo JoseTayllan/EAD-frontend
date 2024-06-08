@@ -1,16 +1,16 @@
-# foodExplorer
+# coead
 
-## Projeto de frontend para aplicação foodExplorer
+## Projeto de frontend para aplicação coead
 
 <p align="center">
-  <h1 align="center"><a href="https://stately-cajeta-ac26ef.netlify.app/">foodExplorer - Rocketseat Explorer 🚀 </a></h1>
+  <h1 align="center"><a href="https://stately-cajeta-ac26ef.netlify.app/">coead - Rocketseat Explorer 🚀 </a></h1>
 </p>
 
 ___
 
 ## 💻 Sobre
 
-O foodExplorer é uma aplicação web fictícia para gerenciamento de restaurantes e solicitação de direta pelo cliente. A aplicação é totalmente responsiva para a utilização através dos mais diversos dispositivos! Após o cadastro na plataforma o usuário terá as permissões necessárias para criar cada pedido e acompanhar seu status. Como parte do desafio foi desenvolvida uma seção para os favoritos na página Home e uma página exclusiva para listagem de favoritos. A funcionalidade de carrinho e pagamento constam como opcional e serão desenvolvidos posteriormente. A aplicação é 100% funcional e o usuário pode navegar por diversas páginas e utilizar a barra lateral com controle dinâmico de aparência para navegação. Além disso, o avatar do usuário é disponibilizado no cabeçalho, permitindo que este atualize seus dados. O Administrador terá a capacidade de criar/editar/remover os pratos da forma que desejar.
+O coead é uma aplicação web fictícia para gerenciamento de restaurantes e solicitação de direta pelo cliente. A aplicação é totalmente responsiva para a utilização através dos mais diversos dispositivos! Após o cadastro na plataforma o usuário terá as permissões necessárias para criar cada pedido e acompanhar seu status. Como parte do desafio foi desenvolvida uma seção para os favoritos na página Home e uma página exclusiva para listagem de favoritos. A funcionalidade de carrinho e pagamento constam como opcional e serão desenvolvidos posteriormente. A aplicação é 100% funcional e o usuário pode navegar por diversas páginas e utilizar a barra lateral com controle dinâmico de aparência para navegação. Além disso, o avatar do usuário é disponibilizado no cabeçalho, permitindo que este atualize seus dados. O Administrador terá a capacidade de criar/editar/remover os pratos da forma que desejar.
 
 Foi desenvolvida a logo marca do restaurante fictício com o auxílio de inteligencia artificial, mais precisamente, o DALL-E, da empresa de tecnologia OpenAI. Esta imagem acompanha tanto o administrador quanto o usuário comum por toda a navegação criando a identidade e associando a imagem da empresa para fidelização do cliente.
 
@@ -20,7 +20,7 @@ ___
 
 ## 🎨 Layout
 
-O layout com todas as páginas obrigatórias e opcionais foi disponibilizada no figma por meio [DESSE LINK](https://www.figma.com/file/LOMJWIopGI0VwmAU9aT2YS/food-explorer-v2?node-id=201-1532&t=zm3uJVZpfRMLBSLd-0).
+O layout com todas as páginas obrigatórias e opcionais foi disponibilizada no figma por meio [DESSE LINK](https://www.figma.com/file/LOMJWIopGI0VwmAU9aT2YS/coead-v2?node-id=201-1532&t=zm3uJVZpfRMLBSLd-0).
 
 ![Alt text](src/assets/advertisement/Capa.png)
 
@@ -52,7 +52,7 @@ ___
 Clone o projeto para o local desejado em seu computador.
 
 ```bash
-git clone https://github.com/jakunzler/foodExplorer-frontend
+git clone https://github.com/jakunzler/coead-frontend
 ```
 
 ___
@@ -61,7 +61,7 @@ ___
 
 ```bash
 # Navegue até o diretório do FrontEnd
-$ cd foodExplorer-frontend
+$ cd coead-frontend
 
 # Instale as dependências necessárias
 $ yarn
@@ -75,7 +75,7 @@ ___
 ## Estrutura de pastas
 
 ```markdown
-foodExplorer-frontend/
+coead-frontend/
 ├── node_modules/
 │   └── ...
 ├── public/
@@ -113,7 +113,7 @@ ___
 
 ## 👩🏾‍💻 Personas
 
-A aplicação foodExplorer possui duas personas principais: o admin e o usuário, mas foi previsto um terceiro usuário como suporte que tem acesso semelhante ao administrador. É possível criar um novo usuário ou testar a aplicação usando as seguintes informações de login:
+A aplicação coead possui duas personas principais: o admin e o usuário, mas foi previsto um terceiro usuário como suporte que tem acesso semelhante ao administrador. É possível criar um novo usuário ou testar a aplicação usando as seguintes informações de login:
 
 Admin:
 

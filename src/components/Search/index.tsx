@@ -34,7 +34,7 @@ export function Search(
               sx={
                 { 
                   ml: 1, 
-                  color: theme.foodExplorer.light[400]
+                  color: theme.coead.light[400]
                 }
               }
             />

@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-import bannerImage from '../../assets/images/banner-image.png';
+import bannerImage from '../../assets/images/empty-profile.png';
 import { Figure } from '../Figure';
 
 export function Banner() {
