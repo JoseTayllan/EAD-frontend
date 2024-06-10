@@ -9,13 +9,13 @@ interface MainProps {
 }
 
 export const Container = styled.div`
-  display: none;
+  display: none; 
 
-  @media screen and (min-width: 768px) {
-    display: block;
+  @media screen and (min-width: 768px) {   
+    display: block; 
   }
 
-`;
+`;  
 
 export const Nav = styled.nav<NavProps>`
   height: 100%;
@@ -26,10 +26,10 @@ export const Nav = styled.nav<NavProps>`
   display: flex;
   flex-direction: column;
   background-color: rgb(28, 37, 54);
-  color: #fff;
+  color: ##192227;
   grid-area: sidebar;
   transition: width 0.4s;
-
+  background-color: ${({ theme }) => theme.coead.tints.mint[150]};
 `;
 
 export const NavHeader = styled.div<NavProps>`
@@ -39,17 +39,18 @@ export const NavHeader = styled.div<NavProps>`
   align-items: center;
   width: 100%;
   height: 140px;
-
+  //background-color: ${({ theme }) => theme.coead.tints.mint[1000]}; Layalt da barra lateral 
   .SideBarButton {
     width: 100%;
     display: flex;
     justify-content: ${({ $opened = true}) => ($opened ? 'space-between' : 'center')};
     align-items: center;
+   
 
     > button {
       > svg {
         margin-top: 6px;
-        color: #fff;
+        color: #fff;  
       }
     }
 
@@ -73,6 +74,7 @@ export const Main = styled.main<MainProps>`
   margin-left: ${({ $opened }) => ($opened ? '280px' : '64px')};
   transition: margin 0.4s;
   margin-bottom: 1rem;
+ ]};
 `;
 
 export const Profile = styled.div`
@@ -82,8 +84,9 @@ export const Profile = styled.div`
   gap: 8px;
 
   > button {
-    color: ${({ theme }) => theme.coead.light[300]};
+    color: #fff;   
     font-size: large;
+    //background-color: ${({ theme }) => theme.coead.tints.mint[1000]}; Contorno Logo e Notificações
   }
 
   > div {
@@ -95,7 +98,7 @@ export const Profile = styled.div`
 `;
 
 export const PopperContent = styled.div`
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  background-color: ${({ theme }) => theme.coead.tints.mint[1000]};
   padding: 1rem;
   margin: 1rem 2rem 0 0;
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -111,7 +114,7 @@ export const HeaderPopperContent = styled.div`
   border-bottom: 1px ${({ theme }) => theme.palette.grey[900]} solid;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  font-weight: bold;
+  font-weight: bold;  
 `;
 
 export const BodyPopperContent = styled.div`
@@ -130,10 +133,12 @@ export const ItemsContainer = styled.div`
   padding: 20px 10px 0 10px;
   gap: 5px;
   height: 100%;
+  //background-color: ${({ theme }) => theme.coead.tints.mint[1000]}; Cor central da barra Lateral
 `;
 
 export const Footer = styled.div`
   padding-top: 20px;
   height: 90px;
   padding-left: -10px;
+ // background-color: ${({ theme }) => theme.coead.tints.mint[1000]}; Cor do rodapé barra lateral
 `;

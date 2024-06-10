@@ -7,7 +7,7 @@ export const Container = styled(MuiContainer).attrs({
   margin: 0;
   padding: 0;
 
-  width: fit-content;
+  width: fit-content; 
 
   @media (min-width: 768px) {
     display: none;

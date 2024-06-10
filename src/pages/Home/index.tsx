@@ -268,7 +268,7 @@ export function Home() {
               }}
               color="primary"
             >
-              <TourIcon id="help_tour" style={{ fontSize: '64px' }} />
+              <TourIcon id="help_tour" style={{ fontSize: '64px' ,}} />
             </IconButton>
           </Tooltip>
         </div>

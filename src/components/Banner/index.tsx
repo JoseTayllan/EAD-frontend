@@ -13,18 +13,18 @@ export function Banner() {
                     alt="Banner"
                     style={
                         {
-                            paddingTop: '15px',
+                            paddingTop: '70px',
                             marginLeft: '-15px',
-                            width: 'max(53%, 190px)',
+                            width: 'max(30%, 190px)',
                         }
                     }
                 />
                 <S.TextContainer>
                     <S.Title>
-                        Sabores iniguláveis
+                        Em breve um universo de Livros, Cursos, Podcasts e Fóruns!
                     </S.Title>
                     <S.Description>
-                        Sinta o cuidado do preparo com ingredientes selecionados.
+                       Aproveite os diversos cursos e Materiais.
                     </S.Description>
                 </S.TextContainer>
             </S.Content>

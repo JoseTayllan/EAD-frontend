@@ -2,7 +2,7 @@ import * as S from './styles'
 
 import { Brand } from '../Brand'
 
-import logo from '@/assets/images/empty-profile.png'
+import logo from '@/assets/logos/Logo-EAD.png';
 
 import { theme } from '../../styles/theme';
 
@@ -10,10 +10,10 @@ import CopyrightIcon from '@mui/icons-material/Copyright';
 
 export function Footer() {
   const company = {
-    name: 'coead',
+    name: 'EAD System',
     logoUrl: logo,
-    width: 25,
-    height: 25,
+    width: 85,
+    height: 85,
   }
   return (
     <S.Container>

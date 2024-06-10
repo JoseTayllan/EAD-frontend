@@ -6,11 +6,12 @@ interface ContentProps {
 }
 
 export const Container = styled(Grid)<ContentProps>`
-  display: flex;
+  //display: flex; Tudo se resolve comentando esse maldito
   flex-direction: column;
+  background-color: ${({ theme }) => theme.coead.tints.mint[1000]};  //configurações
   
   width: 100%;
-  height: 100vh;
+  height: 136vh; 
 
   > h2 {
     padding: 1.5rem 0 0 2rem;

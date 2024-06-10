@@ -23,7 +23,7 @@ import { theme } from '../../../styles/theme';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import logo from '@/assets/logos/Logo-academicos-do-tatuape-2018.png';
+import logo from '@/assets/logos/Logo-EAD.png';
 
 export function Login() {
   const { signIn } = useAuth();
@@ -34,8 +34,8 @@ export function Login() {
   const company = {
     name: 'EAD System',
     logoUrl: logo,
-    width: 250,
-    height: 250,
+    width: 550,
+    height: 450,
   };
 
   const state = {

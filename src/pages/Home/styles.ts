@@ -8,7 +8,7 @@ interface ContentProps {
 export const ContainerHeader = styled(Grid)`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between;  
 `;
 
 export const ActionsContainer = styled.div`
@@ -19,11 +19,14 @@ export const ActionsContainer = styled.div`
 `;
 
 export const Container = styled(Grid)<ContentProps>`
+  //padding: 0; 
+  //overflow: auto;
   display: flex;
   flex-direction: column;
-  
+  background-color: ${({ theme }) => theme.coead.tints.mint[200]};  
   width: 100%;
   height: 100vh;
+  
 
   > h2 {
     padding: 1.5rem 0 0 2rem;
@@ -37,9 +40,9 @@ export const Container = styled(Grid)<ContentProps>`
 `;
 
 export const Content = styled(Grid)<ContentProps>`
-  padding: ${({ $opened }) => ($opened ? '0' : '16px 16px 0')};
+  padding: ${({ $opened }) => ($opened ? '0' : '16px 16px 0')}; 
   overflow: auto;
-  
+
   flex: 1;
   
   width: 100%;
@@ -77,19 +80,19 @@ export const Content = styled(Grid)<ContentProps>`
             gap: 1rem;
             width: 100%;
             height: 100%;
-            padding: 0 1rem;
+            padding: 0 1rem;  
           }
         }
       }
 
       @media screen and (min-width: 768px) {
         margin-left: ${({ $opened = true }) => ($opened ? '280px' : '64px')};
-        width: ${({ $opened }) => ($opened ? '1000px' : '65vw')};
+        width: ${({ $opened }) => ($opened ? '1000px' : '65vw')}
           
         > .swiper {
           width: 100%; 
           height: 100%;
-
+           
           overflow: hidden;
 
           > .swiper-wrapper {
@@ -135,7 +138,7 @@ export const CardsContainer = styled(Grid)`
   flex-wrap: wrap;
 
   width: 100%;
-
+  
 `;
 
 export const ChartsContainer = styled(Grid)`

@@ -56,7 +56,6 @@ export const HeaderPopperContent = styled.div`
 export const BodyPopperContent = styled.div`
   display: flex;
   flex-direction: column;
-
   max-height: 600px;
   min-height: fit-content;
   max-width: 500px;
@@ -69,4 +68,5 @@ export const Footer = styled.div`
   padding-top: 20px;
   height: 200px;
   padding-left: -10px;
+  
 `;

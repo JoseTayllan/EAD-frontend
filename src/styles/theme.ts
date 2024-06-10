@@ -37,8 +37,20 @@ declare module '@mui/material/styles' {
           100: string;
         },
         mint: {
+          50:string;
           100: string;
+          150:string;
           200: string;
+          300: string;
+          400: string;
+          500: string;
+          600: string;
+          700: string;
+          800: string;
+          900: string;
+          950: string;
+          1000: string;
+          5000: string;
         },
         cake: {
           100: string;
@@ -82,8 +94,20 @@ declare module '@mui/material/styles' {
           100: string;
         },
         mint: {
+          50: string;
           100: string;
+          150: string
           200: string;
+          300: string;
+          400: string;
+          500: string;
+          600: string;
+          700: string;
+          800: string;
+          900: string;
+          950: string;
+          1000: string;
+          5000: string;
         },
         cake: {
           100: string;
@@ -119,7 +143,7 @@ const theme = createTheme({
     },
     tints: {
       tomato: {
-        100: '#750310',
+        100: '#750310', 
         200: '#92000E',
         300: '#AB222E',
         400: '#AB4D55',
@@ -128,12 +152,25 @@ const theme = createTheme({
         100: '#FBA94C',
       },
       mint: {
-        100: '#008000',
-        200: '#04D361',
+        50: '#F2FFF2',   // Verde Água (Muito Claro)
+        100: '#E0FFE5',
+        150: '#2bca7e',
+        200: '#B3FFC6',
+        300: '#80FF99',
+        400: '#4DFF6D',
+        500: '#1AFF40',
+        600: '#00E636',
+        700: '#00B82C',
+        800: '#008C22',
+        900: '#005F17',
+        950: '#00470F',   // Verde Escuro
+        1000: '#003B0D',
+        5000: '#03170e',
       },
       cake: {
         100: '#065E7C',
         200: '#82F3FF',
+        
       },
     },
   },

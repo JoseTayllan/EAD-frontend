@@ -19,9 +19,9 @@ export const Content = styled(MuiContainer).attrs({
 })`
   margin: 0;
   padding: 0;
-
+  
   width: 100%;
-
+  
   display: flex;
   flex-direction: column;
   justify-content: center;

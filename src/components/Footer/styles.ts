@@ -19,7 +19,7 @@ export const Content = styled.footer`
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-
+  background-color: ${({ theme }) => theme.coead.tints.mint[150]}; 
   padding-left: 40px;
 
   width: 100%;

@@ -17,6 +17,8 @@ export const Content = styled.div`
   gap: 2rem;
   width: 100%;
 
+  background: ${({ theme }) => theme.coead.light[100]};
+
   @media screen and (min-width: 768px) {
     flex-direction: row;
     gap: 0;
@@ -28,7 +30,7 @@ export const BrandCard = styled.div`
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
-    background: ${({ theme }) => theme.coead.light[100]};
+    background: ${({ theme }) => theme.coead.tints.mint[150]};
     background-size: cover;
 
     display: flex;
@@ -44,7 +46,7 @@ export const BrandCard = styled.div`
       margin-top: 0.6rem;
       margin-right: 0.5rem;
       padding: 12rem 5.3rem;
-      background: ${({ theme }) => theme.coead.dark[400]};
+      background: ${({ theme }) => theme.coead.tints.mint[150]};
       border-radius: 16px;
     }
   }
@@ -85,7 +87,7 @@ export const Form = styled.form`
   }
 
   @media screen and (min-width: 768px) {
-    background: ${({ theme }) => theme.coead.dark[700]};
+    background: ${({ theme }) => theme.coead.tints.mint[150]};
     border-radius: 16px;
     margin-top: 0.5rem;
     padding: 2.4rem;

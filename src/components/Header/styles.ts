@@ -6,10 +6,10 @@ export const Container = styled(MuiContainer)`
   max-width: 100%;
   height: 114px;
   transition: margin 0.4s;
-  background-color: ${({ theme }) => theme.coead.dark[700]};
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; 
   padding: 10px;
 `;
 
@@ -17,6 +17,7 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: ${({ theme }) => theme.coead.tints.mint[150]};
 
   width: 100%;
 
@@ -27,9 +28,9 @@ export const Content = styled.div`
     width: 100%;
     height: 100%;
     padding: 0 12px;
-
+    background-color: ${({ theme }) => theme.coead.tints.mint[150]};
     > .EmptyElement {
-      display: auto;
+      display: auto; 
     }
 
     > .Brand {
@@ -62,7 +63,7 @@ export const Content = styled.div`
         top: -0.5rem;
         right: 10px;
         width: auto;
-
+        
         font-size: 8px;
 
         padding: 2px;
@@ -70,7 +71,7 @@ export const Content = styled.div`
 
         border: 2px solid ${({ theme }) => theme.coead.light[500]};
 
-        background-color: ${({ theme }) => theme.coead.tints.tomato[100]};
+        background-color: ${({ theme }) => theme.coead.tints.mint[100]};
       }
     }
 
@@ -112,7 +113,7 @@ export const Content = styled.div`
       > .SearchBar {
         display: inline-block;
         width: inherit;
-
+         
         .MuiFormControl-root {
           margin: 0;
           padding: 0;
@@ -123,7 +124,7 @@ export const Content = styled.div`
       }
 
       > button {
-        display: inline-block;
+        display: inline-block; 
       }
 
       > .LogoutIcon {
@@ -185,7 +186,7 @@ export const HeaderPopperContent = styled.div`
 export const BodyPopperContent = styled.div`
   display: flex;
   flex-direction: column;
-
+  
   max-height: 600px;
   min-height: fit-content;
   max-width: 500px;

@@ -28,7 +28,7 @@ export const BrandCard = styled.div`
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
-    background: ${({ theme }) => theme.coead.tints.mint[100]};
+    background: ${({ theme }) => theme.coead.tints.mint[150]};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,7 +79,7 @@ export const Form = styled.form`
   @media screen and (min-width: 768px) {
     margin-top: 0.5rem;
     padding: 2.4rem;
-    background: ${({ theme }) => theme.coead.dark[700]};
+    background: ${({ theme }) => theme.coead.tints.mint[150]};
     border-radius: 8px;
 
     width: 40vw;

@@ -2,7 +2,7 @@
 import {
   Avatar,
   Button,
-  ClickAwayListener,
+  ClickAwayListener,  
   IconButton,
   Popper
  } from '@mui/material';
@@ -12,7 +12,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import HomeRounded from '@mui/icons-material/HomeRounded';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 
-import logo from '@/assets/images/empty-profile.png';
+import logo from '@/assets/logos/Logo-EAD.png';
 
 import * as S from './styles';
 import { theme } from '@/styles/theme';
@@ -120,16 +120,16 @@ export function Header({
   const orderList = orderQuantity;
 
   const company = {
-    name: 'coead',
-    logoUrl: logo,
-    width: 48,
-    height: 48,
+    name: 'EAD System',
+    logoUrl: logo, 
+    width: 85,
+    height: 85,
   };
 
   const searchProps = {
-    placeholder: 'Busque por pratos ou ingredientes',
+    placeholder: 'Busque por Livros e muito mais',
     style: {
-      minWidth: '242px',
+      minWidth: '350px',
       maxWidth: 'calc(416px + 0.5vw)',
       height: '48px',
       padding: '36px 28px',
@@ -466,6 +466,7 @@ export function Header({
                             {
                               textTransform: "none",
                               color: theme.coead.light[100],
+                              backgroundColor: theme.coead.dark[900],
                               width: 'calc(416px + 0.5vw)',
                               margin: '24px auto',
                               padding: '12px 36px',
@@ -483,8 +484,9 @@ export function Header({
                             {
                               textTransform: "none",
                               color: theme.coead.light[100],
+                              backgroundColor: theme.coead.dark[900],
                               width: 'calc(416px + 0.5vw)',
-                              margin: '24px auto',
+                              margin: '25px auto',
                               padding: '12px 36px',
                               fontSize: '1rem',
                             }
@@ -500,7 +502,7 @@ export function Header({
                             {
                               display: 'flex',
                               textTransform: "none",
-                              backgroundColor: theme.coead.tints.tomato[100],
+                              backgroundColor: theme.coead.dark[900],
                               color: theme.coead.light[100],
                               width: 'calc(416px + 0.5vw)',
                               margin: '24px auto',

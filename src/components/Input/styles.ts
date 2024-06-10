@@ -13,7 +13,6 @@ export const Container = styled(MuiContainer).attrs({
 })`
   margin: 0;
   padding: 0;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -23,6 +22,7 @@ export const Container = styled(MuiContainer).attrs({
 `;
 
 export const StyledLabel = styled.span<InputProps>(({ style, $isInvisible }) => ({
+  
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',

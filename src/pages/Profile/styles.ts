@@ -8,7 +8,7 @@ interface ContentProps {
 export const Container = styled.div<ContentProps>`
   padding: 0;
   overflow: auto;
-
+  background-color: ${({ theme }) => theme.coead.tints.mint[1000]};  
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -22,7 +22,7 @@ export const Container = styled.div<ContentProps>`
 `;
 
 export const Content = styled(Grid)<ContentProps>`
-  padding: ${({ $opened }) => ($opened ? '0' : '16px 56px 0')};
+  padding: ${({ $opened }) => ($opened ? '0' : '16px 56px 0')}; 
   overflow: auto;
   
   flex: 1;

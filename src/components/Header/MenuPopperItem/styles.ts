@@ -4,7 +4,7 @@ export const ItemsPopperContent = styled.div`
   padding: 0.5rem 0;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  cursor: pointer; 
 `;
 
 export const IconContent = styled.div`

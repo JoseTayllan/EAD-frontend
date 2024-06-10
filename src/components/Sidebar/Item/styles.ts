@@ -19,6 +19,7 @@ export const Container = styled(Button)<ContainerProps>`
     color: ${({ $active }) => ($active ? '#fff' : 'rgb(157, 164, 174)')};
     transition: background-color 0.3s;
     text-transform: none;
+    background-color: ${({ theme }) => theme.coead.dark[900]};// Cores dos menus da barra lateral
 
     svg {
       fill: ${({ $active }) =>
@@ -32,7 +33,7 @@ export const Container = styled(Button)<ContainerProps>`
 
     &.MuiButtonBase-root:active {
       background-color: ${({ $active }) =>
-        $active ? 'rgba(255, 255, 255, 0.04)' : 'transparent'};
+        $active ? 'rgba(255, 255, 255, 0.04)' : 'transparent'};      
     }
   }
 `;

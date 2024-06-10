@@ -16,7 +16,11 @@ import GroupIcon from '@mui/icons-material/Group';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import HomeRounded from '@mui/icons-material/HomeRounded';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ListAltIcon from '@mui/icons-material/ListAlt';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import PodcastsIcon from '@mui/icons-material/Podcasts';
+import ForumIcon from '@mui/icons-material/Forum';
+
+
 
 import * as S from './styles';
 
@@ -32,6 +36,8 @@ import MenuPopperItem from '../Header/MenuPopperItem';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
+
 
 export type SidebarProps = {
   onClickSideBarButton: () => void;
@@ -169,8 +175,18 @@ export function Sidebar({ onClickSideBarButton, isOpened, hasPermission }: Sideb
         navigateTo: '/favorites',
       },
       {
-        title: 'Meus Pedidos',
-        icon: <ListAltIcon />,
+        title: 'Novo Curso',
+        icon: <MenuBookIcon />,
+        navigateTo: '/orders',
+      },
+      {
+        title: 'Novo Podcast',
+        icon: <PodcastsIcon />,
+        navigateTo: '/orders',
+      },
+      {
+        title: 'Novo Fórun',
+        icon: <ForumIcon />,
         navigateTo: '/orders',
       },
       {
@@ -178,11 +194,7 @@ export function Sidebar({ onClickSideBarButton, isOpened, hasPermission }: Sideb
         icon: <CalendarMonthIcon />,
         navigateTo: '/calendar',
       },
-      {
-        title: 'Blog',
-        icon: <BookIcon />,
-        navigateTo: 'https://github.com/jakunzler',
-      },
+    
       {
         title: 'Sair',
         icon: <LogoutIcon />,

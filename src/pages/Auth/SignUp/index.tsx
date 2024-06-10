@@ -18,7 +18,7 @@ import * as Utils from '../../../utils/interfaces';
 
 import { theme } from '../../../styles/theme';
 
-import logo from '@/assets/images/empty-profile.png';
+import logo from '@/assets/logos/Logo-EAD.png';
 
 export function SignUp() {
   const navigate = useNavigate();
@@ -26,8 +26,8 @@ export function SignUp() {
   const company = {
     name: 'coead',
     logoUrl: logo,
-    width: 50,
-    height: 50,
+    width: 350,
+    height: 350,
   };
 
   const validationSchema = yup.object({
