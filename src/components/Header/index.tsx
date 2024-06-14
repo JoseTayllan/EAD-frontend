@@ -1,7 +1,7 @@
 
 import {
   Avatar,
-  Button,
+  // Button,
   ClickAwayListener,  
   IconButton,
   Popper
@@ -15,10 +15,11 @@ import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import logo from '@/assets/logos/Logo-EAD.png';
 
 import * as S from './styles';
-import { theme } from '@/styles/theme';
+// import { theme } from '@/styles/theme';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import emptyImage from '../../assets/images/empty-profile.png';
 import { useAuth } from '../../hooks/AuthProvider';
@@ -30,7 +31,7 @@ import { Brand } from '../Brand';
 import { Menu } from './Menu';
 import MenuPopperItem from './MenuPopperItem';
 import { Search } from '@/components/Search';
-import { ReceiptLong, Restaurant } from '@mui/icons-material';
+import { /* ReceiptLong, */ Restaurant } from '@mui/icons-material';
 
 interface HeaderProps {
   hasPermission: boolean;
@@ -39,7 +40,7 @@ interface HeaderProps {
 }
 
 interface openOrderProps {
-  dishId?: string;
+  courseId?: string;
   quantity?: number;
 }
 
@@ -49,10 +50,12 @@ export function Header({
   onClickMenu,
 }: HeaderProps) {
   const { signOut, user } = useAuth();
+  const isDesktop = useMediaQuery({ query: '(min-width: 786px)' });
+  console.log(isDesktop)
   const [search, setSearch] = 
   useState<React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>
   (null as unknown as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
-  const [filteredDishes, setFilteredDishes] = useState([]);
+  const [filteredCourses, setFilteredCourses] = useState([]);
   const [anchorFunctionalitiesEl, setAnchorFunctionalitiesEl] =
     useState<null | HTMLElement>(null);
   const [anchorMessagesEl, setAnchorMessagesEl] = useState<null | HTMLElement>(
@@ -120,7 +123,6 @@ export function Header({
   const orderList = orderQuantity;
 
   const company = {
-    name: 'EAD System',
     logoUrl: logo, 
     width: 85,
     height: 85,
@@ -129,10 +131,10 @@ export function Header({
   const searchProps = {
     placeholder: 'Busque por Livros e muito mais',
     style: {
-      minWidth: '350px',
-      maxWidth: 'calc(416px + 0.5vw)',
+      minWidth: '450px',
+      maxWidth: '750px',
       height: '48px',
-      padding: '36px 28px',
+      padding: '36px 0',
       marginBottom: '2rem',
     },
     handleKeyDown: handleKeyDown,
@@ -144,19 +146,19 @@ export function Header({
     onClickMenu: onClickMenu,
   }
 
-  const dishes = (
+  const courses = (
     JSON.parse(
-      localStorage.getItem('@coead-backend:dishes')
-      ? (localStorage.getItem('@coead-backend:dishes') as string)
+      localStorage.getItem('@coead-backend:courses')
+      ? (localStorage.getItem('@coead-backend:courses') as string)
         : '[]'
     )
   );
   
   function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === 'Enter') {
-      setFilteredDishes(
-        dishes.filter((dish: Utils.dishProps) =>
-          dish.name?.toLowerCase().includes(search.target.value.toLowerCase())
+      setFilteredCourses(
+        courses.filter((course: Utils.courseProps) =>
+          course.name?.toLowerCase().includes(search.target.value.toLowerCase())
         )
       )
     }
@@ -165,7 +167,7 @@ export function Header({
   return (
     <S.Container>
       <S.Content>
-        <Menu menuProps={menuProps}/>
+        <Menu menuProps={menuProps} />
           {
             isMenuOpened ? (
               <S.Profile>
@@ -262,16 +264,6 @@ export function Header({
 
                       <div className="BrandPermission">
                         <Brand style={{ fontSize: 21.163 }} company={ company }/>
-                        <span
-                          style={
-                            {
-                              color: '#fff',
-                              fontSize: '0.8rem'
-                            }
-                          }
-                        >
-                          admin
-                        </span>
                       </div>
 
                       <div className="SearchBar">
@@ -301,13 +293,13 @@ export function Header({
                                 <S.HeaderPopperContent>Resultados da busca</S.HeaderPopperContent>
                                 <S.BodyPopperContent>
                                   {
-                                    filteredDishes && filteredDishes.map((dish: Utils.dishProps) => (
+                                    filteredCourses && filteredCourses.map((course: Utils.courseProps) => (
                                       <MenuPopperItem
-                                        key={dish.id}
+                                        key={course.id}
                                         icon={<Restaurant />}
-                                        title={dish?.name || 'Sem nome'}
+                                        title={course?.name || 'Sem nome'}
                                         callback={() => {
-                                          navigate(`/dish/${dish.id}`);
+                                          navigate(`/course/${course.id}`);
                                         }}
                                       />
                                     ))
@@ -318,41 +310,7 @@ export function Header({
                           </IconButton>
                         </ClickAwayListener>
                       </div>
-
-                      <Button
-                        variant="text"
-                        sx={
-                            {
-                              textTransform: "none",
-                              color: theme.coead.light[100],
-                              width: 'calc(416px + 0.5vw)',
-                              margin: '24px auto',
-                              padding: '12px 36px',
-                              fontSize: '1rem',
-                            }
-                          }
-                          onClick={() => navigate(`/favorites`)}
-                      >
-                          Meus Favoritos
-                      </Button>
-
-                      <Button
-                        variant="text"
-                        sx={
-                            {
-                              textTransform: "none",
-                              color: theme.coead.light[100],
-                              width: 'calc(316px + 0.5vw)',
-                              margin: '24px auto',
-                              padding: '12px 36px',
-                              fontSize: '1rem',
-                            }
-                          }
-                          onClick={() => navigate(`/new-dish`)}
-                      >
-                          Novo prato
-                      </Button>
-                      
+{/* 
                       <Button
                         variant="contained"
                         sx={
@@ -379,23 +337,16 @@ export function Header({
                         }
                       >
                         <ReceiptLong />
-                        <span>Pedidos ({orderList})</span>
+                        <span>Matriculados ({orderList})</span>
                       </div>
                       </Button>
-                      
+                       */}
                       <LogoutIcon
                         className='LogoutIcon'
                         cursor='pointer'
                         onClick={handleSignOut}
                       />  
 
-                      <div className="overlap">
-                        <span
-                          style={{ color: '#fff', fontSize: '0.8rem' }}
-                        >
-                          admin
-                        </span>
-                      </div>
                     </ div>
                   ) : (
                     <div className='HeaderItems'>
@@ -442,13 +393,13 @@ export function Header({
                                 <S.HeaderPopperContent>Resultados da busca</S.HeaderPopperContent>
                                 <S.BodyPopperContent>
                                   {
-                                    filteredDishes && filteredDishes.map((dish: Utils.dishProps) => (
+                                    filteredCourses && filteredCourses.map((course: Utils.courseProps) => (
                                       <MenuPopperItem
-                                        key={dish.id}
+                                        key={course.id}
                                         icon={<Restaurant />}
-                                        title={dish?.name || 'Sem nome'}
+                                        title={course?.name || 'Sem nome'}
                                         callback={() => {
-                                          navigate(`/dish/${dish.id}`);
+                                          navigate(`/course/${course.id}`);
                                         }}
                                       />
                                     ))
@@ -459,25 +410,7 @@ export function Header({
                           </IconButton>
                         </ClickAwayListener>
                       </div>
-
-                      <Button
-                        variant="text"
-                        sx={
-                            {
-                              textTransform: "none",
-                              color: theme.coead.light[100],
-                              backgroundColor: theme.coead.dark[900],
-                              width: 'calc(416px + 0.5vw)',
-                              margin: '24px auto',
-                              padding: '12px 36px',
-                              fontSize: '1rem',
-                            }
-                          }
-                          onClick={() => navigate(`/favorites`)}
-                      >
-                          Meus Favoritos
-                      </Button>
-                      
+{/* 
                       <Button
                         variant="text"
                         sx={
@@ -493,10 +426,10 @@ export function Header({
                           }
                           onClick={() => alert('Funcionalidade em desenvolvimento!')}
                       >
-                          Histórico de Pedidos
+                          Histórico
                       </Button>
-                      
-                      <Button
+                       */}
+                      {/* <Button
                         variant="contained"
                         sx={
                             {
@@ -511,27 +444,27 @@ export function Header({
                             }
                         }
                         onClick={() => alert('Funcionalidade em desenvolvimento!')}
-                    >
-                      <div
-                        style={
-                          {
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            gap: '8px',
-                          }
-                        }
                       >
-                        <ReceiptLong />
-                        <span>Pedido ({orderList})</span>
-                      </div>
-                    </Button>
+                        <div
+                          style={
+                            {
+                              display: 'flex',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              gap: '8px',
+                            }
+                          }
+                        >
+                          <ReceiptLong />
+                          <span>Matriculados ({orderList})</span>
+                        </div>
+                      </Button> */}
 
-                    <LogoutIcon
-                        className='LogoutIcon'
-                        cursor='pointer'
-                        onClick={handleSignOut}
-                      />  
+                      <LogoutIcon
+                          className='LogoutIcon'
+                          cursor='pointer'
+                          onClick={handleSignOut}
+                        />  
 
                     </ div>
                   )
@@ -539,7 +472,7 @@ export function Header({
               </>
             )
           }
-        </S.Content>
+      </S.Content>
     </S.Container>
   );
 }

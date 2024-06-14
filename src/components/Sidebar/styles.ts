@@ -14,7 +14,6 @@ export const Container = styled.div`
   @media screen and (min-width: 768px) {   
     display: block; 
   }
-
 `;  
 
 export const Nav = styled.nav<NavProps>`
@@ -26,7 +25,7 @@ export const Nav = styled.nav<NavProps>`
   display: flex;
   flex-direction: column;
   background-color: rgb(28, 37, 54);
-  color: ##192227;
+  color: #192227;
   grid-area: sidebar;
   transition: width 0.4s;
   background-color: ${({ theme }) => theme.coead.tints.mint[150]};
@@ -38,7 +37,7 @@ export const NavHeader = styled.div<NavProps>`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 140px;
+  height: 242px;
   //background-color: ${({ theme }) => theme.coead.tints.mint[1000]}; Layalt da barra lateral 
   .SideBarButton {
     width: 100%;
@@ -74,7 +73,6 @@ export const Main = styled.main<MainProps>`
   margin-left: ${({ $opened }) => ($opened ? '280px' : '64px')};
   transition: margin 0.4s;
   margin-bottom: 1rem;
- ]};
 `;
 
 export const Profile = styled.div`
@@ -111,7 +109,7 @@ export const PopperContent = styled.div`
 export const HeaderPopperContent = styled.div`
   display: flex;
   justify-content: center;
-  border-bottom: 1px ${({ theme }) => theme.palette.grey[900]} solid;
+  border-bottom: 2px solid ${({ theme }) => theme.coead.dark[800]};
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   font-weight: bold;  
@@ -138,7 +136,7 @@ export const ItemsContainer = styled.div`
 
 export const Footer = styled.div`
   padding-top: 20px;
-  height: 90px;
+  height: 95px;
   padding-left: -10px;
  // background-color: ${({ theme }) => theme.coead.tints.mint[1000]}; Cor do rodapé barra lateral
 `;

@@ -30,22 +30,22 @@ export interface categoryProps {
   id?: string;
   name?: string;
   description?: string;
-  dishes: {
+  courses: {
     id?: string;
-    dishId?: string;
+    courseId?: string;
     categoryId?: string;
-    dish: dishProps;
+    course: courseProps;
   }[];
 }
 
-export interface dishCategoryProps {
+export interface courseCategoryProps {
   id?: string;
-  dishId?: string;
+  courseId?: string;
   categoryId?: string;
-  dish: dishProps;
+  course: courseProps;
 }
 
-export interface dishProps {
+export interface courseProps {
   id?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -73,7 +73,7 @@ export interface dishProps {
   },
 }
 
-export interface editDishProps {
+export interface editCourseProps {
   id?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -89,7 +89,7 @@ export interface editDishProps {
 }
 
 export interface openOrderProps {
-  dishId?: string;
+  courseId?: string;
   quantity?: number;
 }
 
@@ -101,10 +101,10 @@ export interface categoryProps {
   description?: string;
 }
 
-export interface favoriteDishProps {
+export interface favoriteCourseProps {
   id?: number;
   userId?: string;
-  dishId?: number;
+  courseId?: number;
 }
 
 export interface restaurantsProps {

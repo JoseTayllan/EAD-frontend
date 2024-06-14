@@ -135,7 +135,7 @@ export function Sidebar({ onClickSideBarButton, isOpened, hasPermission }: Sideb
       {
         title: 'Novo Prato',
         icon: <RestaurantIcon />,
-        navigateTo: '/new-dish',
+        navigateTo: '/new-course',
       },
       {
         title: 'Meus Favoritos',

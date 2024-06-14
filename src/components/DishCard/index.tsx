@@ -15,15 +15,15 @@ import { theme } from '../../styles/theme'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-interface DishCardProps {
+interface CourseCardProps {
     props: {
         hasPermission: boolean;
-        dishId: string | undefined;
-        dishName: string | undefined;
-        dishPrice: string | undefined;
-        dishImage: string | undefined;
-        onClickFavorite: (dishId: string | undefined) => void;
-        onClickIncludeOrder: (dishId: string | undefined, quantity: number) => void;
+        courseId: string | undefined;
+        courseName: string | undefined;
+        coursePrice: string | undefined;
+        courseImage: string | undefined;
+        onClickFavorite: (courseId: string | undefined) => void;
+        onClickIncludeOrder: (courseId: string | undefined, quantity: number) => void;
         isFavorite: boolean | undefined;
     }
 }
@@ -42,7 +42,7 @@ const figureProps: FigureProps = {
     }
 };
 
-export function DishCard({ props }: DishCardProps) {
+export function CourseCard({ props }: CourseCardProps) {
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState<number>(1);
 
@@ -71,7 +71,7 @@ export function DishCard({ props }: DishCardProps) {
                                 color: theme.coead.light[100],
                             }
                         }
-                        onClick={() => navigate(`/edit-dish/${props.dishId}`)}
+                        onClick={() => navigate(`/edit-course/${props.courseId}`)}
                     >
                         <EditOutlined
                             sx={
@@ -101,7 +101,7 @@ export function DishCard({ props }: DishCardProps) {
                                         fontSize: '2rem',
                                     }
                                 }
-                                onClick={() => props.onClickFavorite(props.dishId)}
+                                onClick={() => props.onClickFavorite(props.courseId)}
                             />
                         ) : (
                             <FavoriteBorderIcon
@@ -116,7 +116,7 @@ export function DishCard({ props }: DishCardProps) {
                                         fontSize: '2rem',
                                     }
                                 }
-                                onClick={() => props.onClickFavorite(props.dishId)}
+                                onClick={() => props.onClickFavorite(props.courseId)}
                             />
                         )
                     }
@@ -125,9 +125,9 @@ export function DishCard({ props }: DishCardProps) {
             }
         <CardMedia
         component={'img'}
-        image={props.dishImage}
-        title={`Imagem do prato selecionado ${props.dishName}`}
-        alt={`Prato selecionado ${props.dishName}`}
+        image={props.courseImage}
+        title={`Imagem do prato selecionado ${props.courseName}`}
+        alt={`Prato selecionado ${props.courseName}`}
         {...figureProps}
         sx={
             {
@@ -154,9 +154,9 @@ export function DishCard({ props }: DishCardProps) {
                     color: theme.coead.light[300],
                 }
             }
-            onClick={() => navigate(`/dish/${props.dishId}`)}
+            onClick={() => navigate(`/course/${props.courseId}`)}
         >
-            {props.dishName}
+            {props.courseName}
         </Button>
         <Typography
             variant="body1"
@@ -170,7 +170,7 @@ export function DishCard({ props }: DishCardProps) {
             }
             }
         >
-            R$ {props.dishPrice?.toString().replace(/\./g, ',')}
+            R$ {props.coursePrice?.toString().replace(/\./g, ',')}
         </Typography>
         </CardContent>
         <CardActions
@@ -232,7 +232,7 @@ export function DishCard({ props }: DishCardProps) {
                     margin: '16px 24px 24px',
                 }
             }
-            onClick={() => props.onClickIncludeOrder(props.dishId, quantity)}
+            onClick={() => props.onClickIncludeOrder(props.courseId, quantity)}
         >
             incluir
         </Button>

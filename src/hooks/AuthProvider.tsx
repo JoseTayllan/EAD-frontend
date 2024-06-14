@@ -62,7 +62,7 @@ export type AuthContextType = {
         totalAmount?: string;
         userId?: string;
         restaurantId?: string;
-        dishes?: [
+        courses?: [
           {
             id?: string;
             name?: string;
@@ -78,11 +78,11 @@ export type AuthContextType = {
         ];
       }
     ];
-    userFavoriteDishes?: [
+    userFavoriteCourses?: [
       {
         id?: string;
         userId?: string;
-        dishId?: string;
+        courseId?: string;
       },
     ];
     permissionGroup?: {
@@ -116,12 +116,12 @@ function AuthProvider({ children }: AuthProviderProps) {
         restaurants,
         currentUser,
         permissions,
-        dishes,
+        courses,
         orders,
         tokenData,
       } = response.data;
       const user = { ...currentUser, ...permissions[0] };
-      const dishesList = dishes ?? [];
+      const coursesList = courses ?? [];
 
       localStorage.setItem(
         '@coead-backend:categories',
@@ -132,16 +132,16 @@ function AuthProvider({ children }: AuthProviderProps) {
         JSON.stringify(restaurants ? restaurants : [])
       );
       localStorage.setItem(
-        '@coead-backend:dishes',
-        JSON.stringify(dishesList ? dishesList : [])
+        '@coead-backend:courses',
+        JSON.stringify(coursesList ? coursesList : [])
       );
       localStorage.setItem(
         '@coead-backend:orders',
         JSON.stringify(orders ? orders : [])
       );
-      if (user.userFavoriteDishes) {
-        const favoritesList: Utils.dishProps[] = user.userFavoriteDishes.map((item: Utils.favoriteDishProps) => {
-          return dishesList.find((dish: Utils.dishProps) => dish.id === item.dishId);
+      if (user.userFavoritecourses) {
+        const favoritesList: Utils.courseProps[] = user.userFavoriteCourses.map((item: Utils.favoriteCourseProps) => {
+          return coursesList.find((course: Utils.courseProps) => course.id === item.courseId);
         })
         localStorage.setItem('@coead-backend:favorites', JSON.stringify(favoritesList ? favoritesList.filter((favorite) => favorite !== undefined) : []));
       }
@@ -162,11 +162,11 @@ function AuthProvider({ children }: AuthProviderProps) {
   const signOut = () => {
     localStorage.removeItem('@coead-backend:categories');
     localStorage.removeItem('@coead-backend:restaurants');
-    localStorage.removeItem('@coead-backend:dishes');
+    localStorage.removeItem('@coead-backend:courses');
     localStorage.removeItem('@coead-backend:orders');
     localStorage.removeItem('@coead-backend:openOrder');
-    localStorage.removeItem('@coead-backend:editingDish');
-    localStorage.removeItem('@coead-backend:visualizedDish');
+    localStorage.removeItem('@coead-backend:editingCourse');
+    localStorage.removeItem('@coead-backend:visualizedCourse');
     localStorage.removeItem('@coead-backend:restaurants');
     localStorage.removeItem('@coead-backend:restaurant');
     localStorage.removeItem('@coead-backend:permissions');

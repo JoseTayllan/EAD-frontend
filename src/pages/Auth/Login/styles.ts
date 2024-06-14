@@ -5,7 +5,6 @@ export const Container = styled.div`
   align-items: stretch;
   justify-content: center;
   height: 100vh;
-  overflow: hidden;
 `;
 
 export const Content = styled.div`
@@ -77,15 +76,15 @@ export const Form = styled.form`
   }
 
   @media screen and (min-width: 768px) {
+    background: ${({ theme }) => theme.coead.tints.mint[150]};
+    border-radius: 16px;
     margin-top: 0.5rem;
     padding: 2.4rem;
-    background: ${({ theme }) => theme.coead.tints.mint[150]};
-    border-radius: 8px;
 
     width: 40vw;
 
     > h1 {
       display: block;
+    }
   }
-
 `;

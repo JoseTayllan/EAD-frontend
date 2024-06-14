@@ -9,14 +9,14 @@ import {
 import { theme } from '../../styles/theme'
 import { useNavigate } from 'react-router-dom'
 
-interface DishCardProps {
+interface CourseCardProps {
   props: {
       hasPermission: boolean;
-      dishId: string | undefined;
-      dishName: string | undefined;
-      dishPrice: string | undefined;
-      dishImage: string | undefined;
-      onClickFavorite: (dishId: string | undefined) => void;
+      courseId: string | undefined;
+      courseName: string | undefined;
+      coursePrice: string | undefined;
+      courseImage: string | undefined;
+      onClickFavorite: (courseId: string | undefined) => void;
       isFavorite: boolean | undefined;
   }
 }
@@ -35,7 +35,7 @@ const figureProps: FigureProps = {
   }
 };
 
-export function FavoriteCard({ props }: DishCardProps) {
+export function FavoriteCard({ props }: CourseCardProps) {
   const navigate = useNavigate();
 
   return(
@@ -61,9 +61,9 @@ export function FavoriteCard({ props }: DishCardProps) {
       >
       <CardMedia
       component={'img'}
-      image={props.dishImage}
-      title={`Imagem do prato selecionado ${props.dishName}`}
-      alt={`Prato selecionado ${props.dishName}`}
+      image={props.courseImage}
+      title={`Imagem do prato selecionado ${props.courseName}`}
+      alt={`Prato selecionado ${props.courseName}`}
       {...figureProps}
       sx={
           {
@@ -109,9 +109,9 @@ export function FavoriteCard({ props }: DishCardProps) {
                   padding: '0',
               }
           }
-          onClick={() => navigate(`/dish/${props.dishId}`)}
+          onClick={() => navigate(`/course/${props.courseId}`)}
       >
-          {props.dishName}
+          {props.courseName}
       </Button>
       </CardContent>
       <CardActions
@@ -139,7 +139,7 @@ export function FavoriteCard({ props }: DishCardProps) {
                     padding: '0',
               }
           }
-          onClick={() => props.onClickFavorite(props.dishId)}
+          onClick={() => props.onClickFavorite(props.courseId)}
       >
           Remover dos favoritos
       </Button>

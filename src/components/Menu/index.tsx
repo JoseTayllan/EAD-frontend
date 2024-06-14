@@ -40,7 +40,7 @@ export function Menu(props: MenuProps) {
     const [search, setSearch] = 
     useState<React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>>
     (null as unknown as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
-    const [filteredDishes, setFilteredDishes] = useState([]);
+    const [filteredCourses, setFilteredCourses] = useState([]);
     const [anchorSearchEl, setAnchorSearchEl] = useState<null | HTMLElement>(
       null
     );
@@ -48,7 +48,7 @@ export function Menu(props: MenuProps) {
     const navigate = useNavigate();
 
     const searchProps = {
-      placeholder: 'Busque por pratos ou ingredientes',
+      placeholder: 'Busque por cursos e muito mais',
       style: {
         height: '48px',
         padding: '36px 28px',
@@ -58,10 +58,10 @@ export function Menu(props: MenuProps) {
       setSearch: setSearch,
     };
   
-    const dishes = (
+    const courses = (
       JSON.parse(
-        localStorage.getItem('@coead-backend:dishes')
-        ? (localStorage.getItem('@coead-backend:dishes') as string)
+        localStorage.getItem('@coead-backend:courses')
+        ? (localStorage.getItem('@coead-backend:courses') as string)
           : '[]'
       )
     );
@@ -74,9 +74,9 @@ export function Menu(props: MenuProps) {
             navigateTo: '/',
           },
           {
-            title: 'Novo Prato',
+            title: 'Novo Curso',
             icon: <RestaurantIcon />,
-            navigateTo: '/new-dish',
+            navigateTo: '/new-course',
           },
           {
             title: 'Meus Favoritos',
@@ -116,7 +116,7 @@ export function Menu(props: MenuProps) {
             navigateTo: '/favorites',
           },
           {
-            title: 'Meus Pedidos',
+            title: 'Matriculados',
             icon: <ListAltIcon />,
             navigateTo: '/orders',
           },
@@ -172,9 +172,9 @@ export function Menu(props: MenuProps) {
   
     function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
       if (event.key === 'Enter') {
-        setFilteredDishes(
-          dishes.filter((dish: Utils.dishProps) =>
-            dish.name?.toLowerCase().includes(search.target.value.toLowerCase())
+        setFilteredCourses(
+          courses.filter((course: Utils.courseProps) =>
+            course.name?.toLowerCase().includes(search.target.value.toLowerCase())
           )
         )
       }
@@ -207,13 +207,13 @@ export function Menu(props: MenuProps) {
                         <S.HeaderPopperContent>Resultados da busca</S.HeaderPopperContent>
                         <S.BodyPopperContent>
                           {
-                            filteredDishes && filteredDishes.map((dish: Utils.dishProps) => (
+                            filteredCourses && filteredCourses.map((course: Utils.courseProps) => (
                               <MenuPopperItem
-                                key={dish.id}
+                                key={course.id}
                                 icon={<RestaurantIcon />}
-                                title={dish?.name || 'Sem nome'}
+                                title={course?.name || 'Sem nome'}
                                 callback={() => {
-                                  navigate(`/dish/${dish.id}`);
+                                  navigate(`/course/${course.id}`);
                                 }}
                               />
                             ))

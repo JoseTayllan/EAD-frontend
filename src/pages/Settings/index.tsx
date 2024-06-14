@@ -61,20 +61,34 @@ export function Settings() {
   
   return (
     <S.Container
-    $opened={isSideBarOpened}
-  >
-    <Header
-      // onInputChange
-      hasPermission={hasPermission}
-      isMenuOpened={isMenuOpened}
-      onClickMenu={handleClickMenu}
-    />
-    <Sidebar
-      onClickSideBarButton={handleSideBarActions}
-      isOpened={isSideBarOpened}
-      hasPermission={hasPermission}
-    />
-    <S.Content $opened={isMenuOpened}>
+      $opened={isSideBarOpened}
+      style={
+        {
+          display: 'flex',
+          flexDirection: 'column',
+        }
+      }
+    >
+      <Header
+        // onInputChange
+        hasPermission={hasPermission}
+        isMenuOpened={isMenuOpened}
+        onClickMenu={handleClickMenu}
+      />
+      <Sidebar
+        onClickSideBarButton={handleSideBarActions}
+        isOpened={isSideBarOpened}
+        hasPermission={hasPermission}
+      />
+      
+      <S.Content
+        $opened={isMenuOpened}
+        style={
+          {
+            flex: 1,
+          }
+        }
+      >
         <Box
           component="main"
           sx={{

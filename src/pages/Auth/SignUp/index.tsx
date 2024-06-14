@@ -10,7 +10,6 @@ import { api } from '../../../services/api';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-
 import { Brand } from '../../../components/Brand';
 import { Input } from '../../../components/Input';
 
@@ -24,7 +23,7 @@ export function SignUp() {
   const navigate = useNavigate();
 
   const company = {
-    name: 'coead',
+    name: 'EAD System',
     logoUrl: logo,
     width: 350,
     height: 350,
@@ -86,7 +85,18 @@ export function SignUp() {
     <S.Container >
       <S.Content>
         <S.BrandCard >
-          <Brand style={{ fontSize: 37.243 }} company={ company } />
+          <Brand
+            style={
+              {
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                fontSize: 37.243,
+              }
+            }
+            company={ company }
+          />
         </S.BrandCard>
         <S.FormCard >
           <S.Form

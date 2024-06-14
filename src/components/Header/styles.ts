@@ -1,23 +1,26 @@
-import { Container as MuiContainer } from '@mui/material';
 import styled from 'styled-components';
 
-export const Container = styled(MuiContainer)`
-  width: 100%;
-  max-width: 100%;
-  height: 114px;
+export const Container = styled.div`
+  margin: 0;
+  padding: 0;
+  height: 180px;
   transition: margin 0.4s;
 
   display: flex;
   align-items: center;
-  justify-content: space-between; 
-  padding: 10px;
+  justify-content: space-between;
+
+  background-color: ${({ theme }) => theme.coead.tints.mint[150]};
+  border: 2px solid ${({ theme }) => theme.coead.tints.mint[800]};
 `;
 
 export const Content = styled.div`
+  margin: 0;
+  padding: 0 10px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.coead.tints.mint[150]};
 
   width: 100%;
 
@@ -27,10 +30,9 @@ export const Content = styled.div`
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    padding: 0 12px;
     background-color: ${({ theme }) => theme.coead.tints.mint[150]};
     > .EmptyElement {
-      display: auto; 
+      display: auto;
     }
 
     > .Brand {
@@ -71,7 +73,7 @@ export const Content = styled.div`
 
         border: 2px solid ${({ theme }) => theme.coead.light[500]};
 
-        background-color: ${({ theme }) => theme.coead.tints.mint[100]};
+        background-color: ${({ theme }) => theme.coead.tints.tomato[400]};
       }
     }
 

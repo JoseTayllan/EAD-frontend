@@ -4,8 +4,10 @@ export const Container = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: center;
-  height: 100vh;
-  overflow-y: scroll;
+
+  @media screen and (min-width: 768px) {
+    height: 100vh;
+  }
 `;
 
 export const Content = styled.div`
@@ -28,17 +30,16 @@ export const Content = styled.div`
 export const BrandCard = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   @media screen and (min-width: 768px) {
     background: ${({ theme }) => theme.coead.tints.mint[150]};
-    background-size: cover;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    width: 50vw;
     height: 100%;
 
     > div {
@@ -61,9 +62,11 @@ export const FormCard = styled.div`
   gap: 1rem;
 
   width: 100%;
-  height: auto;
 
   @media screen and (min-width: 768px) {
+    background: ${({ theme }) => theme.coead.light[100]};
+    background-size: cover;
+
     display: flex;
     margin: 0;
     padding: 0;
@@ -88,16 +91,26 @@ export const Form = styled.form`
 
   @media screen and (min-width: 768px) {
     background: ${({ theme }) => theme.coead.tints.mint[150]};
-    border-radius: 16px;
+    border-radius: 50%;
     margin-top: 0.5rem;
     padding: 2.4rem;
 
     width: 40vw;
 
-  > h1 {
-    display: block;
-  }
+    > h1 {
+      display: block;
+    }
 
-  }
+    > :nth-child(2) {
+      width: 80%;
+    }
 
+    > :nth-child(3) {
+      width: 90%;
+    }
+
+    > :nth-child(4) {
+      width: 95%;
+    }
+  }
 `;

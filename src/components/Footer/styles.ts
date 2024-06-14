@@ -1,17 +1,10 @@
-import { Container as MuiContainer } from '@mui/material';
 import styled from 'styled-components';
 
-export const Container = styled(MuiContainer).attrs({
-  maxWidth: false,
-})`
+export const Container = styled.footer`
   margin: 0;
   padding: 0;
 
   width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Content = styled.footer`
@@ -24,6 +17,7 @@ export const Content = styled.footer`
 
   width: 100%;
   height: 77px;
+  border: 2px solid ${({ theme }) => theme.coead.tints.mint[800]};
 
   @media screen and (min-width: 768px) {
     gap: 20px;

@@ -6,7 +6,7 @@ interface ContentProps {
 }
 
 export const Container = styled(Grid)<ContentProps>`
-  //display: flex; Tudo se resolve comentando esse maldito
+  display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.coead.tints.mint[1000]};  //configurações
   

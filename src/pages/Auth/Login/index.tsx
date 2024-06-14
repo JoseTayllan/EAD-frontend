@@ -45,12 +45,12 @@ export function Login() {
       {
         title: 'Bem vindo!',
         intro:
-          'Seja bem vindo ao:<br><br>Sistema Digital de Gerenciamento de Restaurantes desenvolvido por <br><br> Jonas Augusto Kunzler.',
+          'Seja bem vindo ao:<br><br>Sistema Digital de Cursos Online EAD desenvolvido por <br><br> COEAD.',
       },
       {
         title: 'Acesso',
         intro:
-          'Para acessar o sistema, você deve inserir o seu email e senha cadastrados. <br> <br> O padrão para administrador é: <br>Email: admin@email.com;<br>Senha: 123456. <br><br> O padrão para cliente é: <br>Email: user@email.com;<br>Senha: 123456. <br><br> Aproveite!',
+          'Para acessar o sistema, você deve inserir o seu email e senha cadastrados. <br> <br> Ou você pode criar uma nova conta <br><br> Aproveite!',
       },
     ],
     // hintsEnabled: isShowHints,

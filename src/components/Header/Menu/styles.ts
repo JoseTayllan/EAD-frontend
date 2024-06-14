@@ -1,22 +1,17 @@
-import { Container as MuiContainer } from '@mui/material';
 import styled from 'styled-components';
 
-export const Container = styled(MuiContainer).attrs({
-  maxWidth: 'xl',
-})`
+export const Container = styled.div`
   margin: 0;
   padding: 0;
 
-  width: fit-content; 
+  width: 100%;
 
   @media (min-width: 768px) {
     display: none;
   }
 `;
 
-export const Content = styled(MuiContainer).attrs({
-    maxWidth: 'xl',
-})`
+export const Content = styled.div`
     margin: 0;
     padding: 0;
 
@@ -25,7 +20,7 @@ export const Content = styled(MuiContainer).attrs({
     align-items: center;
     gap: 20px;
 
-    width: fit-content;
+    width: 100%;
 
     > .MenuImage {
         width: 40px;

@@ -10,7 +10,6 @@ import CopyrightIcon from '@mui/icons-material/Copyright';
 
 export function Footer() {
   const company = {
-    name: 'EAD System',
     logoUrl: logo,
     width: 85,
     height: 85,

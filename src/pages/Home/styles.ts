@@ -5,28 +5,12 @@ interface ContentProps {
   $opened?: boolean;
 }
 
-export const ContainerHeader = styled(Grid)`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;  
-`;
-
-export const ActionsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 0.5rem;
-`;
-
 export const Container = styled(Grid)<ContentProps>`
-  //padding: 0; 
-  //overflow: auto;
-  display: flex;
-  flex-direction: column;
-  background-color: ${({ theme }) => theme.coead.tints.mint[200]};  
+  margin: 0;
+  padding: 0; 
+  background-color: ${({ theme }) => theme.coead.tints.mint[1000]};  
   width: 100%;
   height: 100vh;
-  
 
   > h2 {
     padding: 1.5rem 0 0 2rem;
@@ -36,98 +20,15 @@ export const Container = styled(Grid)<ContentProps>`
     margin-left: ${({ $opened = true }) => ($opened ? '280px' : '64px')};
     width: ${({ $opened = true }) => ($opened ? 'calc(100% - 280px)' : 'calc(100% - 64px)')};
   }
-
 `;
 
 export const Content = styled(Grid)<ContentProps>`
   padding: ${({ $opened }) => ($opened ? '0' : '16px 16px 0')}; 
-  overflow: auto;
 
-  flex: 1;
-  
   width: 100%;
 
-  > main div section .swiper-container {
-
-    > .swiper {
-      width: 85vw; 
-      height: 100%;
-
-      overflow: hidden;
-
-      > .swiper-wrapper {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        width: 100%;
-        height: 100%;
-
-        > .swiper-slide {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 1rem;
-          width: 100%;
-          height: 100%;
-          padding: 0 1rem;
-
-          > div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            width: 100%;
-            height: 100%;
-            padding: 0 1rem;  
-          }
-        }
-      }
-
-      @media screen and (min-width: 768px) {
-        margin-left: ${({ $opened = true }) => ($opened ? '280px' : '64px')};
-        width: ${({ $opened }) => ($opened ? '1000px' : '65vw')}
-          
-        > .swiper {
-          width: 100%; 
-          height: 100%;
-           
-          overflow: hidden;
-
-          > .swiper-wrapper {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-            width: 100%;
-            height: 100%;
-
-            > .swiper-slide {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              gap: 1rem;
-              width: 100%;
-              height: 100%;
-              padding: 0 1rem;
-
-              > div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 1rem;
-                width: 100%;
-                height: 100%;
-                padding: 0 1rem;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CardsContainer = styled(Grid)`
@@ -147,20 +48,4 @@ export const ChartsContainer = styled(Grid)`
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 24px;
-`;
-
-export const ItemsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: baseline;
-  align-items: center;
-  padding: 20px 10px 0 10px;
-  gap: 5px;
-  height: 100%;
-`;
-
-export const Footer = styled.div`
-  padding-top: 20px;
-  height: 200px;
-  padding-left: -10px;
 `;
