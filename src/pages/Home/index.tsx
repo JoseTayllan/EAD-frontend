@@ -1,7 +1,7 @@
 import {
   Box,
   // Card,
-  Container,
+  Container, Grid,
   // IconButton,
   // Tooltip,
 } from '@mui/material';
@@ -21,6 +21,13 @@ import * as S from './styles';
 import * as Utils from '../../utils/interfaces';
 
 import { useAuth } from '../../hooks/AuthProvider';
+import myImage from '../../assets/images/Em Busca de Heróis.jpg';
+import myImage1 from '../../assets/images/Adrenaline.jpg';
+import myImage2 from '../../assets/images/podcas.jpg'
+import myImage3 from '../../assets/images/Segurança.jpg'
+import myImage4 from '../../assets/images/A revolta.jpg'
+import myImage5 from '../../assets/images/Lgpd.jpg'
+
 
 export function Home() {
   const { user } = useAuth();
@@ -60,6 +67,12 @@ export function Home() {
 
   function handleSideBarActions() {
     setIsSideBarOpened(!isSideBarOpened);
+  }
+  const [showDevelopmentMessage, setShowDevelopmentMessage] = useState(false);
+
+ function handleClickEbook() {
+  setShowDevelopmentMessage(true);
+  setTimeout(() => setShowDevelopmentMessage(false), 3000); // Oculta a mensagem após 3 segundos
   }
 
   function handleClickFavorite(courseId: string | undefined) {
@@ -209,6 +222,7 @@ export function Home() {
               flexGrow: 1,
               py: 0,
             }}
+            
           >
             {
               isMenuOpened ? (
@@ -223,28 +237,83 @@ export function Home() {
                     justifyContent: 'center',
                   }}
                 >
-                  <span style={{ height:'40px'}}></span>
-                  {
-                    !hasPermission &&
-                      <AppSection title="Favoritos">
-                        
-                      </AppSection>
-                    }
-                    {
-                      categories.map((category: Utils.categoryProps, index: number) => {
-                        return (
-                        <AppSection key={index} title={category.name} >
-                        </AppSection>
-                        )
-                      })
-                    }
-                </Container>
-              )
-            }
-
-          </Box>
-        </S.Content>
-        <Footer/>
-      </S.Container>
+                 {showDevelopmentMessage && (
+                   <div style={{ position: 'fixed', top: '10%', left: '50%', transform: 'translate(-50%, -10%)', backgroundColor: 'rgba(0, 0, 0, 0.8)', color: 'white', padding: '10px 20px', borderRadius: '5px', zIndex: 1000 }}>
+                       Funcionalidade em desenvolvimento
+                  </div>
+                 ) }
+           <span style={{ height: '10px' }}></span>
+              {!hasPermission && <AppSection title="Favoritos" />}
+              <Grid container spacing={1} sx={{ marginTop: '-50px', justifyContent: 'flex-start' }}>
+                <Grid item sx={{ padding: 0, textAlign: 'center', width: '17%' }}>
+                   <h3 style={{ color: '#09d6d3' }}> Livro </h3>
+                    <a href="https://www.kobo.com/br/pt/ebook/em-busca-de-herois-livro-1-o-anel-do-feiticeiro" target="_blank" rel="noopener noreferrer">
+                      <img src={myImage} alt="Descrição da imagem" style={{ width: '100%', height: 'auto' }} /> 
+                    </a>
+                    <h3> Em Busca de Herois </h3>
+                   <h6 style={{ color: '#bdab08' }}>Gratuito</h6>
+                </Grid>
+                <Grid item sx={{ padding: 0, textAlign: 'center', width: '30%' }}>
+                   <h3 style={{ color: '#09d6d3' }}> Podcast </h3>
+                  <iframe
+                    width="100%"
+                    height="auto"
+                    src="https://www.youtube.com/embed/fis26HvvDII"
+                    title="The Future of Technology: A Look Ahead"
+                    style={{ border: 0 }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                    <h3>The Future of Technology: A Look Ahead</h3>
+                </Grid>
+                <Grid item sx={{ padding: 0, textAlign: 'center', width: '24%' }}>
+                <h3 style={{ color: '#09d6d3' }}> Fórun </h3>
+                  <a href="https://forum.adrenaline.com.br/threads/legacy-update-reviva-o-passado-com-a-tecnologia-do-futuro.712870/" target="_blank" rel="noopener noreferrer">
+                    <img src={myImage1} alt="Descrição da imagem" style={{ width: '100%', height: 'auto' }} /> 
+                  </a>
+                   <h3> Fórun Adrenaline </h3>
+                </Grid>
+                <Grid item sx={{ padding: 0, textAlign: 'center', width: '24%' }}>
+                <h3 style={{ color: '#09d6d3' }}> Podcast </h3>
+                  <a href="https://youtu.be/4nepEd9BxPs?si=CjI5ZDXYIiWsTZGG" target="_blank" rel="noopener noreferrer">
+                    <img src={myImage2} alt="Descrição da imagem" style={{ width: '100%', height: 'auto' }} /> 
+                  </a>
+                  <h3> PrimoTech 13 </h3>
+                  </Grid> 
+                  <Grid item sx={{ padding: 0, textAlign: 'center', width: '17%' }}>
+                    <h3 style={{ color: '#09d6d3' }}> Livro </h3>
+                    <a onClick={handleClickEbook}>
+                      <img src={myImage4} alt="Livro Compra" style={{ width: '100%', height: 'auto' }} /> 
+                    </a>
+                    <h3> Compre o eBook</h3>
+                    <h6 style={{ color: '#bdab08' }}>Seu preço </h6> <h4 style={{ color: '#fff700' }}>R$ 64,99</h4> 
+                    </Grid>
+                  <Grid item sx={{ padding: 0, textAlign: 'center', width: '17%' }}>
+                   <h3 style={{ color: '#09d6d3' }}> Curso </h3>
+                  <a href="https://www.ev.org.br/cursos/seguranca-em-tecnologia-da-informacao" target="_blank" rel="noopener noreferrer">
+                    <img src={myImage3} alt="Descrição da imagem" style={{ width: '100%', height: 'auto' }} /> 
+                  </a>
+                     <h3> Matricule-se Agora  </h3>
+                        <h6 style={{ color: '#bdab08' }}>Gratuito</h6>
+                </Grid>
+                <Grid item sx={{ padding: 0, textAlign: 'center', width: '17%' }}>
+                    <h3 style={{ color: '#09d6d3' }}> Livro </h3>
+                    <a onClick={handleClickEbook}>
+                      <img src={myImage5} alt="Livro Compra" style={{ width: '100%', height: 'auto' }} /> 
+                    </a>
+                        <h3> Compre o eBook</h3>
+                         <h6 style={{ color: '#bdab08' }}>Seu preço </h6> <h4 style={{ color: '#fff700' }}>R$ 133,00</h4> 
+                    </Grid>
+                    
+              </Grid>
+              {categories.map((category, index) => (
+                <AppSection key={index} title={category.name} />
+              ))}
+            </Container>
+          )}
+        </Box>
+      </S.Content>
+      <Footer />
+    </S.Container>
   );
 }

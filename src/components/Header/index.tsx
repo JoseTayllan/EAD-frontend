@@ -355,7 +355,7 @@ export function Header({
                         
                         <ReceiptLongIcon
                           cursor='pointer'
-                          onClick={() => alert('Funcionalidade em desenvolvimento!')}
+                          onClick={() => alert('Funcionalidade em desenvolvimento!')} 
                           className='ProductsImage'
                         />
                         <span

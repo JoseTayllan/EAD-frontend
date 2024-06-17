@@ -99,7 +99,7 @@ export function Sidebar({ onClickSideBarButton, isOpened, hasPermission }: Sideb
 
   useEffect(() => {
     setActiveItem(location.pathname);
-  }, []);
+  }, []); 
 
   useEffect(() => {
     setTimeout(() => {
@@ -193,7 +193,7 @@ export function Sidebar({ onClickSideBarButton, isOpened, hasPermission }: Sideb
         title: 'Calendário',
         icon: <CalendarMonthIcon />,
         navigateTo: '/calendar',
-      },
+      }, 
     
       {
         title: 'Sair',

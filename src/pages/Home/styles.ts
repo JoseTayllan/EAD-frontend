@@ -5,12 +5,14 @@ interface ContentProps {
   $opened?: boolean;
 }
 
+
 export const Container = styled(Grid)<ContentProps>`
   margin: 0;
   padding: 0; 
   background-color: ${({ theme }) => theme.coead.tints.mint[1000]};  
   width: 100%;
-  height: 100vh;
+  //height: 100vh;
+  min-height: 100vh;
 
   > h2 {
     padding: 1.5rem 0 0 2rem;
@@ -48,4 +50,5 @@ export const ChartsContainer = styled(Grid)`
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 24px;
+  
 `;
